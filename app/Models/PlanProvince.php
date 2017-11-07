@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class PlanProvince extends Model
-{
+{   
+    protected $table = "plan_province";
+    
     protected $fillable = [
         'plan_id',
         'province_id',
