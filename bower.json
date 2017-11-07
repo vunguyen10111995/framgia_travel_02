@@ -1,0 +1,25 @@
+{
+  "name": "framgia_travel_02",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Van Quy <vanquynguyen1604@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vanquynguyen/framgia_travel_02",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery-ui": "^1.12.1",
+    "jquery": "2.1.1",
+    "bootstrap-datepicker": "^1.7.1",
+    "counter-up": "^1.0.0"
+  }
+}
