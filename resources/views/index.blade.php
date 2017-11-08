@@ -5,7 +5,7 @@
         <div class="fullscreenbanner">
             <ul>
                 <li data-transition="parallaxvertical" data-slotamount="5" data-masterspeed="700" data-title="Slide 1">
-                    <img src="img/home/slider/slider-01.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                    <img src="images/img_sites/home/slider/slider-01.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                     <div class="slider-caption container">
                         <div class="tp-caption rs-caption-1 sft start"
                             data-hoffset="0"
@@ -42,7 +42,7 @@
                     </div>
                 </li>
                 <li data-transition="parallaxvertical" data-slotamount="5" data-masterspeed="1000" data-title="Slide 2">
-                    <img src="img/home/slider/slider-02.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                    <img src="images/img_sites/home/slider/slider-02.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                     <div class="slider-caption container">
                         <div class="tp-caption rs-caption-1 sft start text-center"
                             data-hoffset="0"
@@ -82,7 +82,7 @@
                     </div>
                 </li>
                 <li data-transition="parallaxvertical" data-slotamount="5" data-masterspeed="700" data-title="Slide 1">
-                    <img src="img/home/slider/slider-03.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                    <img src="images/img_sites//home/slider/slider-03.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                     <div class="slider-caption container">
                         <div class="tp-caption rs-caption-1 sft start"
                             data-hoffset="0"
@@ -119,7 +119,7 @@
                     </div>
                 </li>
                 <li data-transition="parallaxvertical" data-slotamount="5" data-masterspeed="1000" data-title="Slide 2">
-                    <img src="img/home/slider/slider-04.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                    <img src="images/img_sites/home/slider/slider-04.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                     <div class="slider-caption container">
                         <div class="tp-caption rs-caption-1 sft start text-center"
                             data-hoffset="0"
@@ -232,7 +232,7 @@
         <div class="row">
             <div class="col-sm-4 col-xs-12">
                 <div class="thumbnail deals">
-                    <img src="img/home/deal/deal-01.jpg" alt="deal-image">
+                    <img src="images/img_sites/home/deal/deal-01.jpg" alt="deal-image">
                     <a href="single-package-right-sidebar.html" class="pageLink"></a>
                     <div class="discountInfo">
                         <div class="discountOffer">
@@ -271,7 +271,7 @@
             </div>
             <div class="col-sm-4 col-xs-12">
                 <div class="thumbnail deals">
-                    <img src="img/home/deal/deal-02.jpg" alt="deal-image">
+                    <img src="images/img_sites/home/deal/deal-02.jpg" alt="deal-image">
                     <a href="single-package-fullwidth.html" class="pageLink"></a>
                     <div class="discountInfo">
                         <div class="discountOffer">
@@ -310,7 +310,7 @@
             </div>
             <div class="col-sm-4 col-xs-12">
                 <div class="thumbnail deals">
-                    <img src="img/home/deal/deal-03.jpg" alt="deal-image">
+                    <img src="images/img_sites/home/deal/deal-03.jpg" alt="deal-image">
                     <a href="single-package-left-sidebar.html" class="pageLink"></a>
                     <div class="discountInfo">
                         <div class="discountOffer">
@@ -398,7 +398,7 @@
             <div class="col-xs-12">
                 <div class="media destinations">
                     <a class="media-left" href="destination-cities.html">
-                    <img class="media-object" src="img/home/destination.jpg" alt="Destination">
+                    <img class="media-object" src="images/img_sites/home/destination.jpg" alt="Destination">
                     </a>
                     <div class="media-body">
                         <h3 class="media-heading">Choose <br>Your Destination</h3>
@@ -514,7 +514,7 @@
             <div class="col-sm-4 isotopeSelector asia">
                 <article class="">
                     <figure>
-                        <img src="img/home/packages/packages-1.jpg" alt="">
+                        <img src="images/img_sites/home/packages/packages-1.jpg" alt="">
                         <h4>Vestibulum Tour</h4>
                         <div class="overlay-background">
                             <div class="inner"></div>
@@ -533,7 +533,7 @@
             <div class="col-sm-4 isotopeSelector america africa">
                 <article class="">
                     <figure>
-                        <img src="img/home/packages/packages-2.jpg" alt="">
+                        <img src="images/img_sites/home/packages/packages-2.jpg" alt="">
                         <h4>Maecenas Tour</h4>
                         <div class="overlay-background">
                             <div class="inner"></div>
@@ -552,7 +552,7 @@
             <div class="col-sm-4 isotopeSelector africa">
                 <article class="">
                     <figure>
-                        <img src="img/home/packages/packages-3.jpg" alt="">
+                        <img src="images/img_sites/home/packages/packages-3.jpg" alt="">
                         <h4>Lobortis Tour</h4>
                         <div class="overlay-background">
                             <div class="inner"></div>
@@ -571,7 +571,7 @@
             <div class="col-sm-4 isotopeSelector asia america">
                 <article class="">
                     <figure>
-                        <img src="img/home/packages/packages-4.jpg" alt="">
+                        <img src="images/img_sites/home/packages/packages-4.jpg" alt="">
                         <h4>Leo Lacus Tour</h4>
                         <div class="overlay-background">
                             <div class="inner"></div>
@@ -590,7 +590,7 @@
             <div class="col-sm-4 isotopeSelector america">
                 <article class="">
                     <figure>
-                        <img src="img/home/packages/packages-5.jpg" alt="">
+                        <img src="images/img_sites/home/packages/packages-5.jpg" alt="">
                         <h4>Nullam Tour</h4>
                         <div class="overlay-background">
                             <div class="inner"></div>
@@ -609,7 +609,7 @@
             <div class="col-sm-4 isotopeSelector africa asia">
                 <article class="">
                     <figure>
-                        <img src="img/home/packages/packages-6.jpg" alt="">
+                        <img src="images/img_sites/home/packages/packages-6.jpg" alt="">
                         <h4>Hendrerit Tour</h4>
                         <div class="overlay-background">
                             <div class="inner"></div>
