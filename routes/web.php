@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/admin', function() {
+    return view('admin._component.test');
+});
