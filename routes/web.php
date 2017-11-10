@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'Sites\HomeController@index')->name('/');
+Route::get('/search', 'Sites\HomeController@searchAjax')->name('search');
 Route::get('/admin', function() {
     return view('admin._component.test');
 });
