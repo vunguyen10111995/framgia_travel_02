@@ -16,7 +16,12 @@
     </head>
     <body>
         <div id="wrapper">
-            @yield('content')
+            @include('admin._section.menu')    
+            <div id="page-wrapper" class="gray-bg">
+                @include('admin._section.head')
+                    @yield('content')
+                @include('admin._section.footer')
+            </div>
         </div>
         {!! Html::script('bowers/jquery/dist/jquery.min.js') !!}
         {!! Html::script('bowers/bootstrap/dist/js/bootstrap.min.js') !!}

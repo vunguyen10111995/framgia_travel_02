@@ -64,4 +64,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(RequestService::class, 'user_id');
     }
+
+    public function isLocalAvatar($name)
+    {
+        $length = strlen(strstr($name, 'https://'));
+        if($length > 0 ) {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public function getAvatarAttribute()
+    {
+        $avatarName = $this->attributes['avatar'];
+        if ($this->isLocalAvatar($avatarName)) {
+            return $avatarName;
+        }
+
+        return asset(config('setting.defaultPath') . $avatarName);
+    }
 }
