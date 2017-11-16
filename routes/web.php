@@ -23,3 +23,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',
 Route::get('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/register', 'LoginController@register')->name('register');
+Route::get('/profile', 'Sites\UserController@index')->name('user.profile');
+Route::post('/profile/avatar/{id}', 'Sites\UserController@changeAvatar')->name('user.changeAvatar');
+Route::post('/profile/password/{id}', 'Sites\UserController@changePassword')->name('user.changePassword');
+Route::post('/profile/email/{id}', 'Sites\UserController@changeEmail')->name('user.changeEmail');
+Route::post('/profile/{id}', 'Sites\UserController@updateProfile')->name('user.updateProfile');
+Route::get('/profile/setting', 'Sites\UserController@setting')->name('user.setting');

@@ -3,18 +3,12 @@
     <nav class="navbar navbar-default navbar-main navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"></a>
+                <a class="navbar-brand" href="{{ route('home') }}"></a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown singleDrop active ">
-                        <a href="index.html">{{ trans('site.home') }}</a>
+                        <a href="{{ route('home') }}">{{ trans('site.home') }}</a>
                     </li>
                     <li class="dropdown megaDropMenu ">
                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="300" data-close-others="true" aria-expanded="false">{{ trans('site.provinces') }}</a>
@@ -43,7 +37,7 @@
                             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('site.admin') }}</a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class=""><a href="#">{{ trans('site.dashboard') }}</a></li>
-                                <li class=""><a href="#">{{ trans('site.profile') }}</a></li>
+                                <li class=""><a href="{{ route('user.profile') }}">{{ trans('site.profile') }}</a></li>
                                 <li class=""><a href="#">{{ trans('site.add_plan') }}</a></li>
                                 <li class=""><a href="#">{{ trans('site.request_services') }}</a></li>
                                 <li class=""><a href="#">{{ trans('site.booking') }}</a></li>
