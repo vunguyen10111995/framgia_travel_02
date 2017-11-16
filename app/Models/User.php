@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Hash;
 
 class User extends Authenticatable
 {
@@ -83,5 +82,10 @@ class User extends Authenticatable
         }
 
         return asset(config('setting.defaultPath') . $avatarName);
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 }
