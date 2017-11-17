@@ -24,6 +24,7 @@
             </div>
         </div>
         {!! Html::script('bowers/jquery/dist/jquery.min.js') !!}
+        {!! Html::script('js/setting.js') !!}
         {!! Html::script('bowers/bootstrap/dist/js/bootstrap.min.js') !!}
         {!! Html::script('bowers/metisMenu/dist/metisMenu.js') !!}
         {!! Html::script('bowers/jquery-slimscroll/jquery.slimscroll.min.js') !!}

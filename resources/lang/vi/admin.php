@@ -65,5 +65,10 @@ return [
     'select_permission' => 'Chọn Permission', 
     'close' => 'Đóng',
     'save' => 'Lưu Lại',
-    'welcome' => 'Xin Chào, :name'
+    'welcome' => 'Xin Chào, :name',
+    'password' => 'Mật Khẩu',
+    'inprogress' => 'Inprogress',
+    'approved' => 'Approved',
+    'add' => 'Thêm',
+    'repassword' => 'Nhập Lại MK',
 ];
