@@ -66,4 +66,9 @@ return [
     'close' => 'Close',
     'save' => 'Save Change',
     'welcome' => 'Welcome, :name',
+    'password' => 'Password',
+    'inprogress' => 'Inprogress',
+    'approved' => 'Approved',
+    'add' => 'Add',
+    'repassword' => 'Repassword',
 ];

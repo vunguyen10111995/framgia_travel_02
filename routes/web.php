@@ -19,10 +19,15 @@ Route::get('/admin', function() {
 Route::group(['prefix' => 'admin', 'as' => 'admin.',  
     'namespace' => 'Admin'], function() {
         Route::resource('/user', 'AdminController');
+        Route::post('/user/updateLevel', 'AdminController@updateLevel')->name('user.updateLevel');
+        Route::post('/user/updateStatus', 'AdminController@updateStatus')->name('user.updateStatus');
 });
 Route::get('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/register', 'LoginController@register')->name('register');
+Route::get('/search/user', 'Admin\AdminController@search');
+Route::get('/user/showData', 'Admin\AdminController@showData')->name('user.showData');
+Route::get('/user/filter', 'Admin\AdminController@filter')->name('user.filter');
 Route::get('/profile', 'Sites\UserController@index')->name('user.profile');
 Route::post('/profile/avatar/{id}', 'Sites\UserController@changeAvatar')->name('user.changeAvatar');
 Route::post('/profile/password/{id}', 'Sites\UserController@changePassword')->name('user.changePassword');
