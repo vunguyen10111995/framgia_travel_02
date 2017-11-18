@@ -71,4 +71,9 @@ return [
     'approved' => 'Approved',
     'add' => 'Add',
     'repassword' => 'Repassword',
+    'name' => 'Name',
+    'manage_category' => 'Manage Category',
+    'manage_province' => 'Manage Provinces',
+    'image' => 'Image',
+    'description' => 'Description',
 ];

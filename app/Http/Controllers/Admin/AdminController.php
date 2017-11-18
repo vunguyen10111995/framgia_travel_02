@@ -43,7 +43,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {   
         $this->validate($request, [
-            'picture' => 'mimes:jpeg,jpg,png',
+            'image' => 'mimes:jpeg,jpg,png',
             'full_name' => 'required',
             'password' => 'min:6|required',
             'repassword' => 'same:password|min:6|required',

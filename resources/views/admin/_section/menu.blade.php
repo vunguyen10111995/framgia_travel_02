@@ -20,13 +20,13 @@
                 </div>
             </li>
             <li>
-                <a href="#"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ trans('admin.manage_user') }}</span></a>
+                <a href="{{ route('admin.user.index') }}"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ trans('admin.manage_user') }}</span></a>
             </li>
             <li>
-                <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>
+                <a href="{{ route('admin.category.index') }}"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ trans('admin.manage_category') }}</span>  </a>
             </li>
             <li>
-                <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>
+                <a href="{{ route('admin.province.index')}}"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ trans('admin.manage_province') }}</span>  </a>
             </li>
             <li class="landing_link">
                 <a target="_blank" href="landing.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning pull-right">NEW</span></a>
