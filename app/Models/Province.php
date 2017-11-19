@@ -22,4 +22,24 @@ class Province extends Model
     {
         return $this->hasMany(Service::class, 'province_id');
     }
+
+    public function isLocalImage($image)
+    {
+        $length = strlen(strstr($image, 'https://'));
+        if($length > 0 ) {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public function getImageAttribute()
+    {
+        $imageName = $this->attributes['image'];
+        if ($this->isLocalImage($imageName)) {
+            return $imageName;
+        }
+
+        return asset(config('setting.defaultPath') . $imageName);
+    }
 }

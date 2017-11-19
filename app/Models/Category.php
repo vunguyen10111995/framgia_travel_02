@@ -19,4 +19,9 @@ class Category extends Model
     {
         return $this->hasMany(RequestService::class, 'category_id');
     }
+
+    public function scopeSearch($query, $key)
+    {
+        return $query->where('name', 'like', '%'. $key .'%');
+    }
 }
