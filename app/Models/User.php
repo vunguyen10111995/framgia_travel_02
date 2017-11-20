@@ -88,4 +88,24 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    public function followerUsers()
+    {
+        return $this->hasMany(Follow::class, 'follower_id');
+    }
+
+    public function followingUsers()
+    {
+        return $this->hasMany(Follow::class, 'following_id');
+    }
+
+    public function scopeWhereFollowing($query, $id)
+    {
+        return $query = User::Where('id', $id)->with('followerUsers.followingUser')->first();
+    }
+
+    public function scopeWhereFollower($query, $id)
+    {
+        return $query = User::Where('id', $id)->with('followingUsers.followerUser')->first();
+    }
 }
