@@ -18,4 +18,5 @@ return [
     'admin' => 0,
     'guide' => 1,
     'user' => 2,
+    'requestPath' => 'images/requestServices/',
 ];

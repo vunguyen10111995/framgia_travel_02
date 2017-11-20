@@ -8,7 +8,7 @@ $(document).ready(function(e) {
         });
     });
     function imageIsLoaded(e) {
-        $('#file').css("color", 'green');
+        $('#file').css('color', 'green');
         $('#image_display').css('display', 'block');
         $('#image_update').attr('src', e.target.result);
         $('#image_update').attr('width', '320px');
@@ -33,3 +33,7 @@ function out(event) {
         $('#mask').fadeOut();
    }
 } 
+
+function showImage(){
+    $('#image_update').toggle();
+}
