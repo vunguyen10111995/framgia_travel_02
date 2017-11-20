@@ -71,4 +71,13 @@ return [
     'approved' => 'Approved',
     'add' => 'Thêm',
     'repassword' => 'Nhập Lại MK',
+    'manage_category' => 'Quản Lý Danh Mục',
+    'manage_province' => 'Quản Lý Địa Điểm',
+    'image' => 'Ảnh',
+    'description' => 'Mô Tả',
+    'manage_service' => 'Quản Lý Dịch Vụ',
+    'categories' => 'Danh Mục',
+    'price' => 'Giá Tiền',
+    'rate' => 'Đánh Giá',
+    'id' => 'Mã',
 ];

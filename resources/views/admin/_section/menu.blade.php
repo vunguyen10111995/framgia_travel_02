@@ -28,6 +28,9 @@
             <li>
                 <a href="{{ route('admin.province.index')}}"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ trans('admin.manage_province') }}</span>  </a>
             </li>
+            <li>
+                <a href="{{ route('admin.service.index')}}"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ trans('admin.manage_service') }}</span>  </a>
+            </li>
             <li class="landing_link">
                 <a target="_blank" href="landing.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning pull-right">NEW</span></a>
             </li>

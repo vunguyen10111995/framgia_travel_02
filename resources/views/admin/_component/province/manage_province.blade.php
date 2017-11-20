@@ -40,7 +40,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary createValue">Save</button>
+                        <button type="button" class="btn btn-primary createValue">{{ trans('admin.save') }}</button>
                     </div>
                 </form>
             </div>
@@ -54,18 +54,6 @@
         <input type="text" name="search_province" id="search_province" class="form-control" placeholder="Search" value="">
     </div>
 </div>
-<div class="row filter_data">
-    <div class="col-md-9">        
-    </div>
-    <div class="col-md-3">
-        <select class="form-control" id="filter_province">
-            @foreach (config('setting.status') as $key => $status)
-            <option value="{{ $status }}" selected="" name="status">{{ $key }}
-            </option>
-            @endforeach
-        </select>
-    </div>
-</div>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
@@ -74,7 +62,7 @@
                     <table class="footable table table-stripped toggle-arrow-tiny">
                         <thead>
                             <tr class="title-provinces">
-                                <th>ID</th>
+                                <th>{{ trans('admin.id') }}</th>
                                 <th id="name_province">{{ trans('admin.name') }}</th>
                                 <th id="name_image">{{ trans('admin.image') }}</th>
                                 <th id="name_description">{{ trans('admin.description') }}</th>
@@ -83,13 +71,13 @@
                         </thead>
                         <tbody>
                             @foreach($provinces as $province)
-                                <tr class="value-provinces {{$province->id}}" id="value-provinces {{$province->id}}">
+                                <tr class="value-provinces {{ $province->id }}" id="value-provinces {{ $province->id }}">
                                     <td>{{ $province->id }}</td>
                                     <td>{{ $province->name }}</td>
                                     <td>
                                         <img src="{{ $province->image }}" id="image">
                                     </td>
-                                    <td>{{ $province->description }}</td>
+                                    <td>{{ substr($province->description, 0, 20) }}...</td>
                                     <td>
                                         <a type="button" class="btn btn-primary btn-sm view_detail" data-toggle="modal" data-target="#viewModal" data-id={{ $province->id }} value="{{ $province->status }}">{{ trans('admin.view') }}</a>
                                     </td>
@@ -118,18 +106,21 @@
                 <h4 class="modal-title" id="myModalLabel">{{ trans('admin.details')}}</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" id="form-2" action="{{ route('admin.province.update', $province->id) }}">
+                <form class="form-horizontal" id="form-2" action="{{ route('admin.province.update', $province->id) }}" enctype="multipart/form-data" method="PUT">
                     {{ csrf_field() }}
                     <div>
-                        <img src="" id="image">
+                        <input type="file" id="file" name="avatar">
+                        <div id="image_display">
+                            <img src="" id="image" alt="" name="image">
+                        </div>
                     </div>
                     <div>
-                        <label for="label">ID</label>
+                        <label for="label">{{ trans('admin.id') }}</label>
                         <input type="text" class="form-control" id="id" value="" disabled="">
                     </div>
                     <div>
                         <label for="label">{{ trans('admin.name') }}</label>
-                        <input type="text" class="form-control" id="name" value="">
+                        <input type="text" class="form-control" id="name" value="" name="name">
                     </div>
                     <div>
                         <label for="label">{{ trans('admin.description') }}</label>

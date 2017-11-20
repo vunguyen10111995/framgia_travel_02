@@ -34,4 +34,34 @@ class Service extends Model
     {
         return $this->belongsTo(ForkSchedule::class, 'service_id');
     }
+
+    public function getPriceAttribute()
+    {
+        return $this->attributes['price'] . '$';
+    }
+
+    public function isLocalImage($name)
+    {
+        $length = strlen(strstr($name, 'https://'));
+        if($length > 0 ) {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public function getImageAttribute()
+    {
+        $avatarName = $this->attributes['image'];
+        if ($this->isLocalImage($avatarName)) {
+            return $avatarName;
+        }
+
+        return asset(config('setting.defaultPath') . $avatarName);
+    }
+
+    public function scopeSearch($query, $key)
+    {
+        return $query->where('name', 'like', '%'. $key .'%');
+    }
 }

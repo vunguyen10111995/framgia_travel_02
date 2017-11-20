@@ -102,7 +102,23 @@ class ProvinceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'avatar' => 'mimes:jpeg,bmp,png,jpg',
+        ]);
+        $data = Province::find($request->id);
+        try {
+            if ($request->hasFile('avatar')) {
+                $file_name = Helper::importFile($request->file('avatar'), config('setting.defaultPath'));
+                $data->image = $file_name;
+            }
+            $data->name = $request->name;
+            $data->description = $request->description;
+            $data->save();
+            
+            return response()->json($data);
+        } catch (Exception $e) {
+            echo $e->get_message();
+        }
     }
 
     /**
@@ -114,5 +130,14 @@ class ProvinceController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $key = $request->key;
+        $provinces = Province::search($key)->get();
+        $result = view('admin._component.province.search', compact('provinces'));
+
+        return response($result);
     }
 }
