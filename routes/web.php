@@ -29,13 +29,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',
         Route::get('/category/show', 'CategoryController@show')->name('category.show');
         Route::post('/category/update', 'CategoryController@update')->name('category.update');
         Route::resource('/province', 'ProvinceController');
+        Route::post('/province/{id}', 'ProvinceController@update')->name('province.update');
+        Route::resource('/service', 'ServiceController');
 });
 Route::get('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/register', 'LoginController@register')->name('register');
 Route::get('/search/user', 'Admin\AdminController@search');
+Route::get('/province/search', 'Admin\ProvinceController@search');
+Route::get('/service/search', 'Admin\ServiceController@search');
 Route::get('/user/showData', 'Admin\AdminController@showData')->name('user.showData');
 Route::get('/province/showData', 'Admin\ProvinceController@showData')->name('province.showData');
+Route::get('/service/showData', 'Admin\ServiceController@showData')->name('service.showData');
 Route::get('/user/filter', 'Admin\AdminController@filter')->name('user.filter');
 Route::get('/profile', 'Sites\UserController@index')->name('user.profile');
 Route::post('/profile/avatar/{id}', 'Sites\UserController@changeAvatar')->name('user.changeAvatar');

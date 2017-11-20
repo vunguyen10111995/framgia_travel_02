@@ -40,7 +40,6 @@ $(document).ready(function() {
                 id: id,
             }
         }).done(function(data) {
-            console.log(data);
             $('#form-2 #image').attr('src', data.image);
             $('#form-2 #id').val(data.id);
             $('#form-2 #name').val(data.name);
@@ -63,17 +62,47 @@ $(document).ready(function() {
         });
     });
 
+    $("#search_province").keyup(function() {
+    var key = $(this).val();
+        setTimeout(function() {
+            $.ajax({
+                url: '/province/search',
+                type: 'GET',
+                data: {
+                    key : key,
+                },
+                success: function(response) {
+                    $('tbody').html(response);
+                }
+            })  
+        }, 1000);
+    });
+
+    $(function() {
+        $('#file').change(function() {
+            var file = this.files[0];
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        });
+    });
+    function imageIsLoaded(e) {
+        $('#file').css("color", 'green');
+        $('#image_display').css('display', 'block');
+        $('#form-2 #image').attr('src', e.target.result);
+    };
+
     $(document).on('click', '.updateValue', function(e){
         e.preventDefault();
+        var id = $('#form-2 #id').val();
+        var form = $('#form-2')[0];
+        var formData = new FormData(form);
         $.ajax({
-            url: '/admin/province/update',
-            data: {
-                _token: $('input[name=_token]').val(),
-                id: $('#form-2 #id').val(),
-                name: $('#form-2 #name').val(),
-                status: $('#form-2 #select_status').val(),
-            },
+            url: '/admin/province/' + id,
+            data: formData,
             type: 'POST',
+            contentType: false,
+            processData: false, 
         }).done(function(data) {
             $('#viewModal').modal('hide');
         });

@@ -42,4 +42,9 @@ class Province extends Model
 
         return asset(config('setting.defaultPath') . $imageName);
     }
+    
+    public function scopeSearch($query, $key)
+    {
+        return $query->where('name', 'like', '%'. $key .'%');
+    }
 }

@@ -76,4 +76,10 @@ return [
     'manage_province' => 'Manage Provinces',
     'image' => 'Image',
     'description' => 'Description',
+    'manage_service' => 'Manage Service',
+    'categories' => 'Category',
+    'province' => 'province',
+    'price' => 'Price',
+    'rate' => 'Rate',
+    'id' => 'ID',
 ];
