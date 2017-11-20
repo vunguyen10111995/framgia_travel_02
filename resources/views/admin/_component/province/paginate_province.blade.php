@@ -11,9 +11,10 @@
                 </tr>
             </thead>
             <tbody>
+            @php $stt = 1; @endphp
                 @foreach($provinces as $province)
                     <tr class="value-provinces {{$province->id}}" id="value-provinces {{$province->id}}">
-                        <td>{{ $province->id }}</td>
+                        <td>{{ $stt++ }}</td>
                         <td>{{ $province->name }}</td>
                         <td>
                             <img src="{{ $province->image }}" id="image">

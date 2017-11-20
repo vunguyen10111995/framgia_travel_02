@@ -8482,3 +8482,20 @@ margin: 0;
 .filter_data {
     margin-top: 10px;
 }
+.title-provinces #name_province {
+    width: 30%;
+}
+.title-provinces #name_image {
+    width: 35%;
+}
+.title-provinces #name_description {
+    width: 30%;
+}
+.value-provinces #image {
+    height: 80px;
+    width: 120px;
+}
+#form-2 #image {
+    width: 200px;
+    height: 150px;
+}
