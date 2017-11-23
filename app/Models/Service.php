@@ -60,8 +60,8 @@ class Service extends Model
         return asset(config('setting.defaultPath') . $avatarName);
     }
 
-    public function scopeSearch($query, $key)
+    static function scopeSearch($query, $value, $key)
     {
-        return $query->where('name', 'like', '%'. $key .'%');
+        return $query->where($value, 'like', '%'. $key .'%');
     }
 }

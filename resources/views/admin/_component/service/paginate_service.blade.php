@@ -16,7 +16,7 @@
             <tbody>
                 @foreach($services as $service)
                     <tr class="value-services {{ $service->id }}">
-                        <td>{{ $service->id }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $service->name }}</td>
                         <td>{{ $service->category->name }}</td>
                         <td>{{ $service->province->name }}</td>

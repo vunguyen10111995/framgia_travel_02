@@ -82,4 +82,5 @@ return [
     'price' => 'Price',
     'rate' => 'Rate',
     'id' => 'ID',
+    'select' => 'Select',
 ];

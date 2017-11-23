@@ -80,4 +80,5 @@ return [
     'price' => 'Giá Tiền',
     'rate' => 'Đánh Giá',
     'id' => 'Mã',
+    'select' => 'Chọn',
 ];

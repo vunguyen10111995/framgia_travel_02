@@ -31,7 +31,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',
         Route::resource('/province', 'ProvinceController');
         Route::post('/province/{id}', 'ProvinceController@update')->name('province.update');
         Route::resource('/service', 'ServiceController');
+        Route::post('/service/{id}', 'ServiceController@update')->name('service.update');
 });
+Route::get('/service/filter', 'Admin\ServiceController@filter');
 Route::get('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/register', 'LoginController@register')->name('register');
