@@ -72,7 +72,7 @@
                         <tbody>
                             @foreach($provinces as $province)
                                 <tr class="value-provinces {{ $province->id }}" id="value-provinces {{ $province->id }}">
-                                    <td>{{ $province->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $province->name }}</td>
                                     <td>
                                         <img src="{{ $province->image }}" id="image">

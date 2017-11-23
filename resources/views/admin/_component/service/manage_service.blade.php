@@ -24,54 +24,46 @@
                 <form class="form-horizontal" method="POST" id="form-1" action="{{route('admin.service.store')}}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div>
-                        <label for="label">{{ trans('admin.avatar') }}</label>
-                        <input type="file" name="image" class="form-control" id="image">
+                        <label for="label">{{ trans('admin.image') }}</label>
+                        <input type="file" name="image" class="form-control">
                     </div>
                     <div>
-                        <label for="label">{{ trans('admin.fullname') }}</label>
-                        <input type="text" name="full_name" class="form-control" id="full_name">
+                        <label for="label">{{ trans('admin.name') }}</label>
+                        <input type="text" name="name" class="form-control" id="name">
                     </div>
                     <div>
-                        <label for="label">{{ trans('admin.email') }}</label>
-                        <input type="email" name="email" class="form-control" id="email">
-                    </div>
-                    <div>
-                        <label for="label">{{ trans('admin.password') }}</label>
-                        <input type="password" name="password" class="form-control" id="password">
-                    </div>
-                    <div>
-                        <label for="label">{{ trans('admin.repassword') }}</label>
-                        <input type="password" name="repassword" class="form-control" id="repassword">
-                    </div>
-                    <div>
-                        <label for="label">{{ trans('admin.address') }}</label>
-                        <input type="text" name="address" class="form-control" id="address">
-                    </div>
-                    <div>
-                        <label for="label">{{ trans('admin.gender') }}</label>
-                        <select class="form-control" name="gender" selected id="gender">
-                            @foreach (config('setting.gender') as $key => $gender)
-                                <option value="{{ $gender }}" selected="" name="gender">{{ $key }}</option>
+                        <label for="label">{{ trans('admin.categories') }}</label>
+                        <select class="form-control" name="category">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div>
-                        <label for="label">{{ trans('admin.level') }}</label>
-                        <select class="form-control" id="level" name="level" selected>
-                            @foreach (config('setting.level') as $key => $level)
-                                <option value="{{ $level }}" selected="" name="level">{{ $key }}
-                                </option>
+                        <label for="label">{{ trans('admin.provinces') }}</label>
+                        <select class="form-control" name="province">
+                            @foreach($provinces as $province)
+                                <option value="{{ $province->id }}">{{ $province->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div>
-                        <label for="label">{{ trans('admin.status') }}</label>
-                        <select class="form-control" id="status" name="status" selected>
-                            @foreach (config('setting.status') as $key => $status)
-                                <option value="{{ $status }}" selected="" name="status">{{ $key }}
-                                </option>
-                            @endforeach
+                        <label for="label">{{ trans('admin.price') }}</label>
+                        <input type="text" name="price" class="form-control" id="price">
+                    </div>
+                    <div>
+                        <label for="label">{{ trans('admin.rate') }}</label>
+                        <select class="form-control" id="rate" name="rate">
+                        @php $i = 1; @endphp;
+                            <option value="">{{ trans('admin.select') }}</option>
+                            @for($i = 1; $i <= 5; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                         </select>
+                    </div>
+                    <div>
+                        <label for="label">{{ trans('admin.description') }}</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('admin.close') }}</button>
@@ -94,9 +86,8 @@
     </div>
     <div class="col-md-3">
         <select class="form-control" id="filter_data">
-            @foreach (config('setting.level') as $key => $level)
-                <option value="{{ $level }}" selected="" name="level">{{ $key }}
-            </option>
+            @foreach($provinces as $province)
+                <option value="{{ $province->id }}">{{ $province->name }}</option>
             @endforeach
         </select>
     </div>
@@ -122,7 +113,7 @@
                         <tbody>
                             @foreach($services as $service)
                                 <tr class="value-services {{ $service->id }}">
-                                    <td>{{ $service->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $service->name }}</td>
                                     <td>{{ $service->category->name }}</td>
                                     <td>{{ $service->province->name }}</td>
@@ -157,37 +148,52 @@
                 <h4 class="modal-title" id="myModalLabel">{{ trans('admin.details') }}</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" id="form-2" enctype="multipart/form-data">
+                <form class="form-horizontal" id="form-2" enctype="multipart/form-data" action="{{ route('admin.service.update', $service->id) }}">
+                    {{ csrf_field() }}
                     <div>
-                        <img src="" id="images">
+                        <input type="file" id="file" name="avatar">
+                        <div id="image_display">
+                            <img src="" id="image" alt="" name="image">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="label">{{ trans('admin.id') }}</label>
+                        <input type="text" class="form-control" id="id" name="id" disabled="">
                     </div>
                     <div>
                         <label for="label">{{ trans('admin.name') }}</label>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div>
                         <label for="label">{{ trans('admin.categories') }}</label>
-                        <input type="email" class="form-control" id="category">
+                        <select class="form-control category" id="category" data-id="" name="category">
+                        </select>
                     </div>
                     <div>
                         <label for="label">{{ trans('admin.provinces') }}</label>
-                        <input type="text" class="form-control" id="province">
+                        <select class="form-control province" id="province" selected data-id="" name="province">
+                        </select>
                     </div>
                     <div>
                         <label for="label">{{ trans('admin.price') }}</label>
-                        <input type="text" class="form-control" id="price">
+                        <input type="text" class="form-control" id="price" name="price">
                     </div>
                     <div>
                         <label for="label">{{ trans('admin.rate') }}</label>
-                        <input type="text" class="form-control" id="rate">
+                        <select class="form-control" name="rate" id="rate">
+                            <option value="">{{ trans('admin.select') }}</option>
+                            @for($i = 1; $i <= 5; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
                     </div>
                     <div>
                         <label for="label">{{ trans('admin.description') }}</label>
-                        <input type="text" class="form-control" id="description">
+                        <input type="text" class="form-control" id="description" name="description">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('admin.close') }}</button>
-                        <button type="button" class="btn btn-primary updateStatus">{{ trans('admin.save')}}</button>
+                        <button type="button" class="btn btn-primary updateValue">{{ trans('admin.save')}}</button>
                     </div>
                 </form>
             </div>

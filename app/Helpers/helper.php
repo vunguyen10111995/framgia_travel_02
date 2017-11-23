@@ -18,4 +18,13 @@ class Helper
             unlink($path . $name);
         }
     }
+    public static function messageException($error = false, $data = [], $message = [], $status = '200')
+    {
+        return [
+            'error' => $error,
+            'data' => $data,
+            'message' => $message,
+            'status' => $status,
+        ];
+    }
 }
