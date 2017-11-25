@@ -10,7 +10,8 @@
         {!! Html::style('bowers/font-awesome/css/font-awesome.min.css') !!}
         {!! Html::style('bowers/toastr/toastr.min.css') !!}
         {!! Html::style('bowers/jquery.gritter/css/jquery.gritter.css') !!}
-        {!! Html::style('css/animate.css') !!} 
+        {!! Html::style('css/animate.css') !!}
+        {!! Html::style('bowers/bootstrap-select/dist/css/bootstrap-select.min.css') !!}
         {!! Html::style('css/style_backend.css') !!}
         @yield('style')
     </head>
@@ -43,6 +44,7 @@
         {!! Html::script('bowers/chart.js/dist/Chart.min.js') !!}
         {!! Html::script('bowers/toastr/toastr.min.js') !!}
         {!! Html::script('js/toastr.js') !!}
+        {!! Html::script('bowers/bootstrap-select/dist/js/bootstrap-select.min.js') !!}
         @yield('script')
     </body>
 </html>

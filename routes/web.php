@@ -32,18 +32,27 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',
         Route::post('/province/{id}', 'ProvinceController@update')->name('province.update');
         Route::resource('/service', 'ServiceController');
         Route::post('/service/{id}', 'ServiceController@update')->name('service.update');
+        Route::resource('/plan', 'PlanController');
+        Route::post('/plan', 'PlanController@store')->name('plan.store');
+        Route::post('/plan/{id}', 'PlanController@update')->name('plan.update');
 });
-Route::get('/service/filter', 'Admin\ServiceController@filter');
+Route::group(['namespace' => 'Admin'], function() {
+    Route::get('/service/filter', 'ServiceController@filter');
+    Route::get('/search/user', 'AdminController@search');
+    Route::get('/province/search', 'ProvinceController@search');
+    Route::get('/service/search', 'ServiceController@search');
+    Route::get('/plan/search', 'PlanController@search');
+    Route::get('/user/showData', 'AdminController@showData')->name('user.showData');
+    Route::get('/province/showData', 'ProvinceController@showData')->name('province.showData');
+    Route::get('/service/showData', 'ServiceController@showData')->name('service.showData');
+    Route::get('/user/filter', 'AdminController@filter')->name('user.filter');
+    Route::get('/plan/filter', 'PlanController@filter')->name('plan.filter');
+    Route::get('/admin/profile/{id}', 'PlanController@profile')->name('admin.profile');
+});
+
 Route::get('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/register', 'LoginController@register')->name('register');
-Route::get('/search/user', 'Admin\AdminController@search');
-Route::get('/province/search', 'Admin\ProvinceController@search');
-Route::get('/service/search', 'Admin\ServiceController@search');
-Route::get('/user/showData', 'Admin\AdminController@showData')->name('user.showData');
-Route::get('/province/showData', 'Admin\ProvinceController@showData')->name('province.showData');
-Route::get('/service/showData', 'Admin\ServiceController@showData')->name('service.showData');
-Route::get('/user/filter', 'Admin\AdminController@filter')->name('user.filter');
 Route::get('/profile', 'Sites\UserController@index')->name('user.profile');
 Route::post('/profile/avatar/{id}', 'Sites\UserController@changeAvatar')->name('user.changeAvatar');
 Route::post('/profile/password/{id}', 'Sites\UserController@changePassword')->name('user.changePassword');
