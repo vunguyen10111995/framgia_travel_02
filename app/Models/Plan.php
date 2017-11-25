@@ -47,4 +47,11 @@ class Plan extends Model
     {
         return $query->where('user_id', $value)->with('planProvinces.province');
     }
+
+    public function scopeSearch($query, $key)
+    {
+        return $query->whereHas('user', function($q) use ($key) {
+            $q->where('full_name', 'like', '%'. $key . '%');
+        });
+    }
 }

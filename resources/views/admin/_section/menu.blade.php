@@ -4,15 +4,27 @@
             <li class="nav-header">
                 <div class="dropdown profile-element">
                     <span>
-                    <img alt="image" class="img-circle" src="{{ asset('images/img_admin/profile_small.jpg') }}" />
+                        <img alt="image" class="img-circle" src="{{ asset('images/img_admin/profile_small.jpg') }}" />
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
-                    </span> <span class="text-muted text-xs block">Admin <b class="caret"></b></span> </span> </a>
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">{{ Auth::user()->full_name }}
+                                </strong>
+                            </span> 
+                            <span class="text-muted text-xs block">Admin 
+                                <b class="caret"></b>
+                            </span> 
+                        </span> 
+                    </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="profile.html">{{trans('admin.profile')}}</a></li>
+                        <li>
+                            <a href="{{ route('admin.profile', Auth::user()->id ) }}">{{ trans('admin.profile') }}</a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a href="login.html">{{trans('admin.logout')}}</a></li>
+                        <li>
+                            <a href="login.html">{{ trans('admin.logout') }}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -31,11 +43,8 @@
             <li>
                 <a href="{{ route('admin.service.index')}}"><i class="fa fa-pie-chart"></i> <span class="nav-label">{{ trans('admin.manage_service') }}</span>  </a>
             </li>
-            <li class="landing_link">
-                <a target="_blank" href="landing.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning pull-right">NEW</span></a>
-            </li>
-            <li class="special_link">
-                <a href="package.html"><i class="fa fa-database"></i> <span class="nav-label">Package</span></a>
+            <li>
+                <a href="{{ route('admin.plan.index') }}"><i class="fa fa-star"></i> <span class="nav-label">{{ trans('admin.plan') }}</span></a>
             </li>
         </ul>
     </div>

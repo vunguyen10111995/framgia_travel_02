@@ -8499,3 +8499,104 @@ margin: 0;
     width: 200px;
     height: 150px;
 }
+.centeredDiv{
+    padding: 20px;
+    background: #FFF;
+    margin-right: auto;
+    margin-left: auto;
+    width: 800px;
+    opacity: 1;
+    border: solid 5px #34bf49;
+}
+#status {
+    width: 100px;
+}
+.max {
+    height: 600px;
+    width: 1000px;
+    margin-left: 0px; 
+}
+.max #tabs-container {
+    transform: translateX(15%); 
+}
+.max #tabs-container .tabs-menu {
+    transform: translate(25%, 20%);
+    height: 30px;
+    float: left;
+    clear: both;
+    list-style-type: none; 
+}
+.max #tabs-container .tabs-menu li {
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    margin-right: 10px;
+    background-color: #ccc; 
+}
+.max #tabs-container .tabs-menu li a {
+    text-decoration: none;
+    padding: 10px;
+    text-transform: uppercase;
+    color: #fff; 
+}
+.max #tabs-container .tabs-menu li.current {
+    position: relative;;
+    z-index: 5; }
+.max #tabs-container .tabs-menu .current a {
+    color: #fff;
+    background: red; 
+}
+.max #tabs-container .tab {
+    float: left;
+    margin-bottom: 20px;
+    width: auto;
+    clear: both;
+}
+.max #tabs-container .tab .tab-content {
+    padding: 20px;
+    display: none;
+}
+.max #tabs-container .tab #tab-1 {
+    display: block; 
+}
+.content-3 {
+    margin-bottom: 70px; 
+}
+.content-3 .card-deck .card {
+    padding: 0px !important;
+    border-radius: 6px !important;
+    width: 300px;
+    margin-left: 20px !important;
+    margin-right: 14px !important;
+    box-shadow: 0 2px 0 0 #e5e5e5;
+}
+.content-3 .card-deck .card img {
+    border-radius: 6px !important;
+    width: 300px; 
+}
+.content-3 .card-deck .card .card-block {
+    margin-right: 10px;
+}
+.content-3 .card-deck .card .card-block a {
+    color: #777 !important;
+    box-shadow: inset 0 0 0 2px #e5e5e5;
+    border-radius: 6px;
+    height: 3em;
+    font-weight: 400;
+    padding: 0 2em;
+    line-height: 3em;
+    border: 0px;
+}
+.content-3 .card-deck .card .card-block a:hover {
+    background: #e5e5e5; 
+}
+.content-3 .card-deck .card .card-block .card-title {
+    font-size: 1.75em;
+    line-height: 1.5em;
+    letter-spacing: -0.025em;
+    font-weight: 300;
+    margin-bottom: 1em;
+}
+.content-3 .card-deck .card .card-block .card-text {
+    margin-bottom: 2.5em;
+}
