@@ -33,6 +33,7 @@
     "flot.tooltip": "^0.9.0",
     "flot-spline": "^0.8.2",
     "metisMenu": "^2.7.1",
-    "select2": "^4.0.5"
+    "select2": "^4.0.5",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47"
   }
 }

@@ -1,7 +1,7 @@
 @extends('sites.master')
 
 @section('style')
-    {{ Html::style('css/profile_home.css')}}
+    {{ Html::style('css/profile_home.css') }}
 @endsection
 
 @section('content')
@@ -199,7 +199,7 @@
             @endif
             <div class="wrap">
                 @foreach($plans as $plan)
-                    <a href="" class="content-plan">
+                    <a href="{{ route('user.schedule', $plan->id) }}" class="content-plan">
                         <div class="tile">
                             <h1 class="del-plan">
                                 <i class="fa fa-times-circle" aria-hidden="true"></i>
@@ -220,6 +220,7 @@
                                     </h5>
                                 @endforeach
                             </div>
+                            <div class="create-schedule">Create schedule</div>
                         </div>
                         <h5 class="title-plan">{{ $plan->title }}</h5>
                     </a>

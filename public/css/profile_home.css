@@ -1,3 +1,7 @@
+body {
+    background-color: #f1f1f1;
+}
+
 header nav {
     display: none;
 }
@@ -49,6 +53,8 @@ header nav {
     box-shadow: 0px 1px 3px #111;
     margin-top: 25px;
     padding-bottom: 20px;
+    background-color: white;
+    color: black;
 }
 
 .select2-selection__choice {
@@ -451,11 +457,18 @@ ul.user-header-menu li > a:hover > span {
     padding-bottom: 5px;
 }
 
+.create-schedule {
+    margin-top: 254px;
+    margin-left: 78px;
+    font-size: 21px;
+    color: orange;
+}
+
 .content-follow {
     margin-bottom: 15px;
 }
 
-.content-follow a{
+.content-follow a {
     margin-right: 10px;
     font-size: 15px;
     font-weight: bold;
@@ -466,10 +479,21 @@ ul.user-header-menu li > a:hover > span {
     color: orange;
 }
 
-#btn-follow{
+#btn-follow {
     float: right;
 }
 
-#btn-unfollow{
+#btn-unfollow {
     float: right;
+}
+
+.number-services {
+    color: red;
+    font-weight: bold;
+}
+
+#expand {
+    width: 984px;
+    margin: 0 auto;
+    padding-left: 117px;
 }

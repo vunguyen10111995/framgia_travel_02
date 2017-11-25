@@ -50,3 +50,12 @@ Route::post('/profile/password/{id}', 'Sites\UserController@changePassword')->na
 Route::post('/profile/email/{id}', 'Sites\UserController@changeEmail')->name('user.changeEmail');
 Route::post('/profile/{id}', 'Sites\UserController@updateProfile')->name('user.updateProfile');
 Route::get('/profile/setting', 'Sites\UserController@setting')->name('user.setting');
+Route::get('/dashboard/{id}', 'Sites\DashboardController@showDashboard')->name('user.dashboard');
+Route::get('/request', 'Sites\DashboardController@getRequest')->name('user.request');
+Route::post('/request', 'Sites\DashboardController@postRequest')->name('user.getRequest');
+Route::get('/plan', 'Sites\DashboardController@getPlan')->name('user.plan');
+Route::post('/plan', 'Sites\DashboardController@postPlan')->name('user.addplan');
+Route::get('/schedule/{id}/edit', 'Sites\DashboardController@getSchedule')->name('user.schedule');
+Route::post('/schedule/update/{id}', 'Sites\DashboardController@postSchedule')->name('schedule.postSchedule');
+Route::get('/showservice', 'AjaxController@getService')->name('schedule.service');
+Route::get('/result', 'AjaxController@getResult')->name('schedule.result');

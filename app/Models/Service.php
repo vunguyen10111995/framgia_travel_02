@@ -64,4 +64,9 @@ class Service extends Model
     {
         return $query->where($value, 'like', '%'. $key .'%');
     }
+
+    public function scopeProvinceCategory($query, $value1, $value2)
+    {
+        return $query->Where('province_id', '=', $value1)->Where('category_id', '=', $value2)->get();
+    }
 }
