@@ -26,4 +26,9 @@ class Schedule extends Model
     {
         return $this->belongsTo(Service::class, 'service_id');
     }
+
+    public function scopeWhereSchedule($query, $value)
+    {
+        return $query->Where('plan_id', $value)->with('service')->get();
+    }
 }

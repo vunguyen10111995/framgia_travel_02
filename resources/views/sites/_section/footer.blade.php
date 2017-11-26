@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-3 col-xs-12">
                     <div class="footerContent">
-                        <a href="index.html" class="footer-logo"><img src="images/img_sites/logo-color-sm.png" alt="footer-logo"></a>
+                        <a href="index.html" class="footer-logo"><img src="{{ asset('images/img_sites/logo-color-sm.png') }}" alt="footer-logo"></a>
                     </div>
                 </div>
                 <div class="col-sm-3 col-xs-12">
@@ -22,22 +22,22 @@
                         <h5>{{ trans('site.gallery') }}</h5>
                         <div class="row">
                             <div class="col-xs-4">
-                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-1.jpg"><img src="images/img_sites/home/gallery/thumb-gallery-1.jpg" alt="image"></a>
+                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-1.jpg"><img src="{{ asset('images/img_sites/home/gallery/thumb-gallery-1.jpg') }}" alt="image"></a>
                             </div>
                             <div class="col-xs-4">
-                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-2.jpg"><img src="images/img_sites/home/gallery/thumb-gallery-2.jpg" alt="image"></a>
+                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-2.jpg"><img src="{{ asset('images/img_sites/home/gallery/thumb-gallery-2.jpg') }}" alt="image"></a>
                             </div>
                             <div class="col-xs-4">
-                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-3.jpg"><img src="images/img_sites/home/gallery/thumb-gallery-3.jpg" alt="image"></a>
+                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-3.jpg"><img src="{{ asset('images/img_sites/home/gallery/thumb-gallery-3.jpg') }}" alt="image"></a>
                             </div>
                             <div class="col-xs-4">
-                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-4.jpg"><img src="images/img_sites/home/gallery/thumb-gallery-4.jpg" alt="image"></a>
+                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-4.jpg"><img src="{{ asset('images/img_sites/home/gallery/thumb-gallery-4.jpg') }}" alt="image"></a>
                             </div>
                             <div class="col-xs-4">
-                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-5.jpg"><img src="images/img_sites/home/gallery/thumb-gallery-5.jpg" alt="image"></a>
+                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-5.jpg"><img src="{{ asset('images/img_sites/home/gallery/thumb-gallery-5.jpg') }}" alt="image"></a>
                             </div>
                             <div class="col-xs-4">
-                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-6.jpg"><img src="images/img_sites/home/gallery/thumb-gallery-6.jpg" alt="image"></a>
+                                <a class="fancybox-pop" href="images/img_sites/home/gallery/gallery-6.jpg"><img src="{{ asset('images/img_sites/home/gallery/thumb-gallery-6.jpg') }}" alt="image"></a>
                             </div>
                         </div>
                     </div>

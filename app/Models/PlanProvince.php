@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class PlanProvince extends Model
-{   
+{
     protected $table = "plan_province";
     
     protected $fillable = [
@@ -21,5 +21,10 @@ class PlanProvince extends Model
     public function province()
     {
         return $this->belongsTo(Province::class, 'province_id');
+    }
+
+    public function scopeWhereProvince($query, $value)
+    {
+        return $query->Where('plan_id', $value)->with('province')->get();
     }
 }

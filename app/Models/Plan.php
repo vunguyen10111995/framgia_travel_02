@@ -54,4 +54,9 @@ class Plan extends Model
             $q->where('full_name', 'like', '%'. $key . '%');
         });
     }
+
+    public function scopeGetUser($query, $value)
+    {
+        return $query->find($value)->with('user')->get();
+    }
 }

@@ -64,6 +64,7 @@ Route::get('/request', 'Sites\DashboardController@getRequest')->name('user.reque
 Route::post('/request', 'Sites\DashboardController@postRequest')->name('user.getRequest');
 Route::get('/plan', 'Sites\DashboardController@getPlan')->name('user.plan');
 Route::post('/plan', 'Sites\DashboardController@postPlan')->name('user.addplan');
+Route::get('/plan/{id}/detail', 'Sites\DetailController@showDetail')->name('user.plan.detail');
 Route::get('/schedule/{id}/edit', 'Sites\DashboardController@getSchedule')->name('user.schedule');
 Route::post('/schedule/update/{id}', 'Sites\DashboardController@postSchedule')->name('schedule.postSchedule');
 Route::get('/showservice', 'AjaxController@getService')->name('schedule.service');
