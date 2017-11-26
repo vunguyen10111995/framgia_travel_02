@@ -5,18 +5,18 @@
 <section class="bannercontainer">
     <div class="fullscreenbanner-container">
         <div class="fullscreenbanner">
-            <ul>
+           <ul>
                 <li data-transition="parallaxvertical" data-slotamount="5" data-masterspeed="700" data-title="Slide 1">
-                    <img src="images/img_sites/home/slider/slider-01.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                    <img src="{{ asset('images/img_sites/home/slider/slider-01.jpg') }}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                 </li>
                 <li data-transition="parallaxvertical" data-slotamount="5" data-masterspeed="1000" data-title="Slide 2">
-                    <img src="images/img_sites/home/slider/slider-02.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                    <img src="{{ asset('images/img_sites/home/slider/slider-02.jpg') }}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                 </li>
                 <li data-transition="parallaxvertical" data-slotamount="5" data-masterspeed="700" data-title="Slide 1">
-                    <img src="images/img_sites//home/slider/slider-03.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                    <img src="{{ asset('images/img_sites//home/slider/slider-03.jpg') }}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                 </li>
                 <li data-transition="parallaxvertical" data-slotamount="5" data-masterspeed="1000" data-title="Slide 2">
-                    <img src="images/img_sites/home/slider/slider-04.jpg" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                    <img src="{{ asset('images/img_sites/home/slider/slider-04.jpg') }}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                 </li>
             </ul>
         </div>
@@ -116,7 +116,7 @@
                                     ${{ $plan->price }}
                                 </h5>
                                 <ul class="list-inline detailsBtn">
-                                    <li><a href="single-package-right-sidebar.html" class="btn buttonTransparent">{{ trans('site.details') }}</a></li>
+                                    <li><a href="{{ route('user.plan.detail', $plan->id) }}" class="btn buttonTransparent">{{ trans('site.details') }}</a></li>
                                     <li><a href='booking-1.html' class="btn buttonTransparent">{{ trans('site.book_now') }}</a></li>
                                 </ul>
                             </div>
