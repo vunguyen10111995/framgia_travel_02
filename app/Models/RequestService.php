@@ -31,4 +31,9 @@ class RequestService extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function scopeSearch($query, $key)
+    {
+        return $query->where('name', 'like', '%'. $key .'%');
+    }
 }

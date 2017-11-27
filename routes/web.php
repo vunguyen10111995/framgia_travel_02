@@ -35,6 +35,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',
         Route::resource('/plan', 'PlanController');
         Route::post('/plan', 'PlanController@store')->name('plan.store');
         Route::post('/plan/{id}', 'PlanController@update')->name('plan.update');
+        Route::get('/request-service', 'RequestServiceController@index')->name('request.service');
+        Route::post('/request-service/{id}', 'RequestServiceController@update')->name('request.service.update');
+        Route::get('/request-service/search', 'RequestServiceController@search')->name('request.service.search');
+        Route::get('/request-service/filter', 'RequestServiceController@filter')->name('request.service.filter');
 });
 Route::group(['namespace' => 'Admin'], function() {
     Route::get('/service/filter', 'ServiceController@filter');
@@ -43,13 +47,13 @@ Route::group(['namespace' => 'Admin'], function() {
     Route::get('/service/search', 'ServiceController@search');
     Route::get('/plan/search', 'PlanController@search');
     Route::get('/user/showData', 'AdminController@showData')->name('user.showData');
+    Route::get('/request-service/showData', 'RequestServiceController@showData')->name('request.service.showData');
     Route::get('/province/showData', 'ProvinceController@showData')->name('province.showData');
     Route::get('/service/showData', 'ServiceController@showData')->name('service.showData');
     Route::get('/user/filter', 'AdminController@filter')->name('user.filter');
     Route::get('/plan/filter', 'PlanController@filter')->name('plan.filter');
     Route::get('/admin/profile/{id}', 'PlanController@profile')->name('admin.profile');
 });
-
 Route::get('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/register', 'LoginController@register')->name('register');
