@@ -46,6 +46,9 @@
             <li>
                 <a href="{{ route('admin.plan.index') }}"><i class="fa fa-star"></i> <span class="nav-label">{{ trans('admin.plan') }}</span></a>
             </li>
+            <li>
+                <a href="{{ route('admin.request.service') }}"><i class="fa fa-star"></i> <span class="nav-label">{{ trans('admin.request_services') }}</span></a>
+            </li>
         </ul>
     </div>
 </nav>

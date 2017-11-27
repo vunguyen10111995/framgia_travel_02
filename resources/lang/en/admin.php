@@ -94,4 +94,7 @@ return [
     'schedule' => 'Schedule',
     'service' => 'Service',
     'number_of_day' => 'Number Of Day',
+    'manage_request_service' => 'Manage Request Service',
+    'open_time' => 'Open Time',
+    'close_time' => 'Close Time',
 ];
