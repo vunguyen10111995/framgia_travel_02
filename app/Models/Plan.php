@@ -23,6 +23,11 @@ class Plan extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'plan_id');
+    }
+
     public function rates()
     {
         return $this->hasMany(Rate::class, 'plan_id');

@@ -101,6 +101,8 @@ return [
     'category' => 'Category',
     'service' => 'Service',
     'reviews' => 'Reviews',
+    'comment' => 'Comment',
+    'say' => 'Says',
     'followings' => 'Followings',
     'followers' => 'Followers',
     'follow' => 'Follow',

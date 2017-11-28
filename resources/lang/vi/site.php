@@ -99,6 +99,8 @@ return [
     'category' => 'Danh mục',
     'service' => 'Dịch vụ',
     'reviews' => 'Đánh giá',
+    'comment' => 'Bình luận',
+    'say' => 'Nói',
     'followings' => 'Đang theo dõi',
     'followers' => 'Người theo dõi',
     'follow' => 'Theo dõi',
