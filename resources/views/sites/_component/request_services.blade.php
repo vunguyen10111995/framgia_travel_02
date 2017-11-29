@@ -115,7 +115,7 @@
     <div class="centeredDiv">
         <h4>{{ trans('site.tell_us') }}</h4>
         <hr>
-        <form action="{{ route('user.getRequest') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('user.storeRequest') }}" method="POST" enctype="multipart/form-data">
             @if ($errors->any)
                 <ul class="alert alert-danger">
                     @foreach ($errors->all() as $error)

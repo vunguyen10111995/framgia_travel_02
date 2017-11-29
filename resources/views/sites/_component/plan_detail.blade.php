@@ -235,27 +235,31 @@
                         <div role="tabpanel" class="tab-pane" id="note">
                         </div> 
                         <div role="tabpanel" class="tab-pane" id="comment">
-                            <form action="" id="comment-form" method="post" enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                <input type="text" name="plan_id" id="plan_id" value="{{ $plan->id }}" data-id="{{ $plan->id }}" hidden>
-                                <textarea name="content" class="form-control text-comment"></textarea>
-                                <button type="submit" class="btn buttonTransparent btn-comment">{{ trans('site.comment') }}</button>
-                            </form>
-                            <div class="show-comment"></div>
-                                @foreach($comments as $comment)
-                                    <header class="comment-header">
-                                        <p class="comment-author">
-                                            <img src="{{ $comment->user->avatar }}" class="img-circle img-comment">
-                                        </p>
-                                        <p>
-                                            <a href="">{{ $comment->user->full_name }}</a><span> {{ trans('site.say') }}:</span>
-                                        </p>
-                                        <p>
-                                            {{ $comment->created_at }}
-                                        </p>
-                                        <p>{{ $comment->content }}</p>
-                                    </header>
-                                @endforeach
+                            @if(Auth::check())
+                                <form action="" id="comment-form" method="post" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <input type="text" name="plan_id" id="plan_id" value="{{ $plan->id }}" data-id="{{ $plan->id }}" hidden>
+                                    <textarea name="content" class="form-control text-comment"></textarea>
+                                    <button type="submit" class="btn buttonTransparent btn-comment">{{ trans('site.comment') }}</button>
+                                </form>
+                                <div class="show-comment"></div>
+                                    @foreach($comments as $comment)
+                                        <header class="comment-header">
+                                            <p class="comment-author">
+                                                <img src="{{ $comment->user->avatar }}" class="img-circle img-comment">
+                                            </p>
+                                            <p>
+                                                <a href="">{{ $comment->user->full_name }}</a><span> {{ trans('site.say') }}:</span>
+                                            </p>
+                                            <p>
+                                                {{ $comment->created_at }}
+                                            </p>
+                                            <p>{{ $comment->content }}</p>
+                                        </header>
+                                    @endforeach
+                                @else
+                                    <p>{{ trans('site.login') }}</p>
+                                @endif
                           </div>        
                         </div>
                     </div>

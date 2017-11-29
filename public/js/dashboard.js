@@ -45,7 +45,7 @@ $(document).ready(function() {
         }
      
         var id = $('#number-services').val();
-        $.get('/result', { 'id' : id }, function(data) {
+        $.get('/schedule/result', { 'id' : id }, function(data) {
             if (id) {
                 $('#expand').html('');
                 for (var i = 1; i <= id; i++) {
@@ -76,7 +76,7 @@ $(document).ready(function() {
     function callService(selector, province_id, category_id) {
         $.ajax({
             method : 'GET',
-            url : '/showservice',
+            url : '/schedule/showservice',
             data : { 'province_id' : province_id, 'category_id' : category_id },
             success : function(response) {
                 selector.parents('.filter').find('.service').html(response);
