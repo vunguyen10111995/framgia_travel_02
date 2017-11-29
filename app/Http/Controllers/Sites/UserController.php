@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Sites;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\sites\PasswordRequest;
+use App\Http\Requests\sites\MailRequest;
+use App\Http\Requests\sites\ProfileRequest;
 use App\Helpers\helper;
 use App\Models\User;
 
@@ -21,13 +24,11 @@ class UserController extends Controller
 
     public function changeAvatar(Request $request, $id)
     {
-        $data = User::findOrFail($id);
+        $changeAvatar = User::findOrFail($id);
         try {
-            if ($request->hasFile('avatar')) {
-                $file_name = helper::importFile($request->file('avatar'), config('setting.defaultPath'));
-                $data->avatar = $file_name;
-            }
-            $data->save();
+            $filename = helper::upload($request->file('avatar'), config('setting.defaultPath'));
+            $changeAvatar->avatar = $filename;
+            $changeAvatar->save();
         } catch (Exception $e) {
             echo $e->get_message();
         }
@@ -35,18 +36,12 @@ class UserController extends Controller
         return redirect('profile');
     }
 
-    public function changePassword(Request $request, $id)
+    public function changePassword(PasswordRequest $request, $id)
     {
-        $this->validate($request, [
-            'password' => 'min:6|required',
-            'password_register' => 'min:6|required',
-            'password_confirm' => 'same:password_register|min:6|required',
-        ]);
-
-        $data = User::find($id);
+        $changePassword = User::find($id);
         try {
-            $data->password = $request->password_register;
-            $data->save();
+            $changePassword->password = $request->password_register;
+            $changePassword->save();
         } catch (Exception $e) {
             echo $e->get_message();
         }
@@ -54,18 +49,12 @@ class UserController extends Controller
         return redirect('profile');
     }
 
-    public function changeEmail(Request $request, $id)
+    public function changeEmail(MailRequest $request, $id)
     {
-        $this->validate($request, [
-            'email' => 'email|required',
-            'new_email' => 'email|required',
-            'email_confirm' => 'same:new_email|email|required',
-        ]);
-
-        $data = User::find($id);
+        $changeEmail = User::find($id);
         try {
-            $data->email = $request->new_email;
-            $data->save();
+            $changeEmail->email = $request->new_email;
+            $changeEmail->save();
         } catch (Exception $e) {
             echo $e->get_message();
         }
@@ -73,23 +62,16 @@ class UserController extends Controller
         return redirect('profile');
     }
 
-    public function updateProfile(Request $request, $id)
+    public function updateProfile(ProfileRequest $request, $id)
     {
-        $this->validate($request, [
-            'full_name' => 'max:255|min:2',
-            'avatar' => 'mimes:jpeg,bmp,png,jpg',
-        ]);
-        
-        $data = User::find($id);
+        $updateProfile = User::find($id);
         try {
-            if ($request->hasFile('avatar')) {
-                $file_name = helper::importFile($request->file('avatar'), config('setting.defaultPath'));
-                $data->avatar = $file_name;
-            }
-            $data->full_name = $request->full_name;
-            $data->address = $request->address;
-            $data->gender = $request->gender;
-            $data->save();
+            $filename = helper::upload($request->file('avatar'), config('setting.defaultPath'));
+            $updateProfile->avatar = $filename;
+            $updateProfile->full_name = $request->full_name;
+            $updateProfile->address = $request->address;
+            $updateProfile->gender = $request->gender;
+            $updateProfile->save();
         } catch (Exception $e) {
             echo $e->get_message();
         }

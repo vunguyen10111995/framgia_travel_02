@@ -130,7 +130,7 @@
                 <div class="profileImg img-request" id="image_display">
                     <img id="image_update" class="thumbnail img-request" width="360" height="437">
                 </div>
-                <input type="file" name="image" id="file" onclick="showImage();" required>
+                <input type="file" name="image" id="file" onclick="showImage();" >
             </div>
             <div class="form-group">
                 <label>{{ trans('site.enter_service_name') }}</label> &nbsp;

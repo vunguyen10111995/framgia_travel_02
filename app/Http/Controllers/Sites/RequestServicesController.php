@@ -26,11 +26,8 @@ class RequestServicesController extends Controller
     {
         try {
             $servicesRequest = new RequestService();
-            if ($request->hasFile('image')) {
-                $file_name = helper::importFile($request->file('image'), config('setting.requestPath'));
-                $servicesRequest->image = $file_name;
-            }
-
+            $filename = helper::upload($request->file('image'), config('setting.requestPath'));
+            $servicesRequest->image = $filename;
             $servicesRequest->fill($request->all());
             $servicesRequest->user_id = Auth::user()->id;
             $servicesRequest->status = config('setting.status.inprogress');
