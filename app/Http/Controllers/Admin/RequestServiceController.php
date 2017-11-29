@@ -13,7 +13,7 @@ use App\Models\Service;
 class RequestServiceController extends Controller
 {
     public function index(Request $request)
-    {   
+    {
         $provinces = Province::all();
         $request_services = RequestService::paginate(5);
         if ($request->ajax()) {

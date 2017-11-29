@@ -54,41 +54,46 @@ Route::group(['namespace' => 'Admin'], function() {
     Route::get('/plan/filter', 'PlanController@filter')->name('plan.filter');
     Route::get('/admin/profile/{id}', 'PlanController@profile')->name('admin.profile');
 });
-Route::post('/register', 'LoginController@register')->name('register');
-Route::get('/login', 'LoginController@login')->name('login');
-Route::get('/profile', 'Sites\UserController@index')->name('user.profile');
-Route::get('/logout', 'LoginController@logout')->name('logout');
-Route::post('/profile/avatar/{id}', 'Sites\UserController@changeAvatar')->name('user.changeAvatar');
-Route::post('/register', 'LoginController@register')->name('register');
-Route::post('/profile/password/{id}', 'Sites\UserController@changePassword')->name('user.changePassword');
-Route::get('/profile', 'Sites\UserController@index')->name('user.profile');
-Route::post('/profile/email/{id}', 'Sites\UserController@changeEmail')->name('user.changeEmail');
-Route::post('/profile/{id}', 'Sites\UserController@updateProfile')->name('user.updateProfile');
-Route::post('/profile/password/{id}', 'Sites\UserController@changePassword')->name('user.changePassword');
-Route::get('/profile/setting', 'Sites\UserController@setting')->name('user.setting');
-Route::post('/profile/email/{id}', 'Sites\UserController@changeEmail')->name('user.changeEmail');
-Route::get('/dashboard/{id}', 'Sites\DashboardController@showDashboard')->name('user.dashboard');
-Route::post('/profile/{id}', 'Sites\UserController@updateProfile')->name('user.updateProfile');
-Route::get('/request', 'Sites\DashboardController@getRequest')->name('user.request');
-Route::get('/profile/setting', 'Sites\UserController@setting')->name('user.setting');
-Route::post('/request', 'Sites\DashboardController@postRequest')->name('user.getRequest');
-Route::get('/dashboard/{id}', 'Sites\DashboardController@showDashboard')->name('user.dashboard');
-Route::get('/plan', 'Sites\DashboardController@getPlan')->name('user.plan');
-Route::post('/plan', 'Sites\DashboardController@postPlan')->name('user.addplan');
-Route::post('/request', 'Sites\DashboardController@postRequest')->name('user.getRequest');
-Route::get('/plan/{id}/detail', 'Sites\DetailController@showDetail')->name('user.plan.detail');
-Route::get('/plan', 'Sites\DashboardController@getPlan')->name('user.plan');
-Route::get('/schedule/{id}/edit', 'Sites\DashboardController@getSchedule')->name('user.schedule');
-Route::post('/plan', 'Sites\DashboardController@postPlan')->name('user.addplan');
-Route::post('/schedule/update/{id}', 'Sites\DashboardController@postSchedule')->name('schedule.postSchedule');
-Route::get('/plan/{id}/detail', 'Sites\DetailController@showDetail')->name('user.plan.detail');
-Route::get('/showservice', 'AjaxController@getService')->name('schedule.service');
-Route::get('/schedule/{id}/edit', 'Sites\DashboardController@getSchedule')->name('user.schedule');
-Route::get('/result', 'AjaxController@getResult')->name('schedule.result');
-Route::post('/schedule/update/{id}', 'Sites\DashboardController@postSchedule')->name('schedule.postSchedule');
-Route::get('/showservice', 'AjaxController@getService')->name('schedule.service');
-Route::get('/result', 'AjaxController@getResult')->name('schedule.result');
+
+Route::group(['prefix' => 'account'], function () {
+    Route::post('/register', 'LoginController@register')->name('register');
+    Route::get('/login', 'LoginController@login')->name('login');
+    Route::get('/logout', 'LoginController@logout')->name('logout');
+});
+
+Route::group(['prefix' => 'profile'], function () {
+    Route::get('/', 'Sites\UserController@index')->name('user.profile');
+    Route::post('/password/{id}', 'Sites\UserController@changePassword')->name('user.changePassword');
+    Route::post('/avatar/{id}', 'Sites\UserController@changeAvatar')->name('user.changeAvatar');
+    Route::post('/email/{id}', 'Sites\UserController@changeEmail')->name('user.changeEmail');
+    Route::post('/{id}', 'Sites\UserController@updateProfile')->name('user.updateProfile');
+    Route::post('/password/{id}', 'Sites\UserController@changePassword')->name('user.changePassword');
+    Route::get('/setting', 'Sites\UserController@setting')->name('user.setting');
+    Route::post('/email/{id}', 'Sites\UserController@changeEmail')->name('user.changeEmail');
+    Route::post('/{id}', 'Sites\UserController@updateProfile')->name('user.updateProfile');
+    Route::get('/setting', 'Sites\UserController@setting')->name('user.setting');
+});
+
+Route::group(['prefix' => 'dashboard'], function () {
+    Route::get('/{id}', 'Sites\DashboardController@show')->name('user.dashboard');
+});
+
+Route::group(['prefix' => 'requestservice'], function () {
+    Route::get('/', 'Sites\RequestServicesController@index')->name('user.request');
+    Route::post('/', 'Sites\RequestServicesController@store')->name('user.storeRequest');
+});
+
+Route::group(['prefix' => 'schedule'], function () {
+    Route::get('/{id}/add', 'Sites\CreateScheduleController@show')->name('user.schedule');
+    Route::post('/update/{id}', 'Sites\CreateScheduleController@store')->name('schedule.postSchedule');
+    Route::get('/result', 'AjaxController@getResult')->name('schedule.result');
+    Route::get('/showservice', 'AjaxController@getService')->name('schedule.service');
+});
+
 Route::group(['prefix' => 'plan'], function () {
+    Route::get('/', 'Sites\RequestPlanController@index')->name('user.plan');
+    Route::post('/', 'Sites\RequestPlanController@store')->name('user.addplan');
+    Route::get('/{id}/detail', 'Sites\RequestPlanController@show')->name('user.plan.detail');
     Route::resource('comment', 'CommentController');
     Route::post('/{id}/comment', 'CommentController@store')->name('use.plan.comment');
 });
