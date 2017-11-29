@@ -2,6 +2,11 @@
 
 @section('style')
     {{ Html::style('css/profile_home.css') }}
+    {{ Html::style('bowers/select2/dist/css/select2.min.css') }}
+@endsection
+
+@section('script')
+    {{ Html::script('js/list_fork.js') }}
 @endsection
 
 @section('content')
@@ -167,7 +172,7 @@
                         <ul class="user-header-menu">
                             @if($user->id == Auth::user()->id)
                                 <li><a href="{{ route('user.profile') }}">{{ trans('site.profile') }}</a></li>
-                                <li><a href="{{ route('user.dashboard', Auth::user()->id) }}">{{ trans('site.plans') }} <span>{{$numberPlan}}</span></a></li>
+                                <li><a href="{{ route('user.dashboard', Auth::user()->id) }}">{{ trans('site.plans') }} <span>{{ $numberPlan }}</span></a></li>
                                 <li><a href="">{{ trans('site.gallery') }}</a></li>
                                 <li><a href="">{{ trans('site.reviews') }}</a></li>
                                 <li><a href="" data-toggle="modal" data-target="#following">{{ trans('site.followings') }} <span>{{ $following }}</span></a></li>
@@ -182,9 +187,10 @@
     </div>
     <div class="container" id="content-dashboard">
         <div class="col-md-3 .col-md-pull-9">
-            <div class="sidebar">
+            <div class="sidebar"> 
                 <ul class="nav nav-sidebar">
                     <li class="active"><a href="">{{ trans('site.my_plans') }}</a></li>
+                    <li><a href="" id="list_fork" value="{{ Auth::user()->id }}">{{ trans('site.my_fork_plans') }}</a></li>
                     <li><a href="">{{ trans('site.request_services') }}</a></li>
                     <li><a href="">{{ trans('site.booking') }}</span></a></li>
                     <li><a href="">{{ trans('site.my_wishlist') }}</a></li>
@@ -192,7 +198,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-9 .col-md-push-3">
+        <div class="col-md-9 .col-md-push-3" id="show_info">
             <h4 class="h4-plan">{{ trans('site.my_plans') }}</h4>
             @if($user->id == Auth::user()->id)
                 <a href="{{ route('user.plan') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i><span> {{ trans('site.add_plan') }}</span></a>
@@ -220,10 +226,12 @@
                                     </h5>
                                 @endforeach
                             </div>
-                            <div class="create-schedule">Create schedule</div>
+                            <div class="create-schedule">{{ trans('site.create_schedule') }}</div>
                         </div>
-                        <h5 class="title-plan">{{ $plan->title }}</h5>
                     </a>
+                    <h5 class="title-plan">{{ trans('site.fork') }}</h5>
+                    <i class="fa fa-eye" aria-hidden="true"> &nbsp;  {{ count($plan->forks) }}</i>
+                    <h5 class="title-plan">{{ $plan->title }}</h5>
                 @endforeach
                 {!! $plans->render() !!}
             </div>

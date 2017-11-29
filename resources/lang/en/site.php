@@ -138,4 +138,11 @@ return [
     'support' => 'Support',
     'blog' => 'Blog',
     'copyright' => 'Copyright © 2016. All Rights Reserved by QUY&VU',
+    'my_fork_plans' => 'My Fork Plan',
+    'view_schedule' => 'View Schedule',
+    'schedule' => 'Schedule',
+    'price' => 'Price',
+    'fork' => 'Fork',
+    'clone' => 'Clone',
+    'list_fork' => 'List Fork',
 ];

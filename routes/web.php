@@ -97,3 +97,7 @@ Route::group(['prefix' => 'plan'], function () {
     Route::resource('comment', 'CommentController');
     Route::post('/{id}/comment', 'CommentController@store')->name('use.plan.comment');
 });
+Route::get('/plan/{id}/fork', 'Sites\ForkController@showFork')->name('user.fork');
+Route::post('/plan/{id}/fork', 'Sites\ForkController@postFork')->name('user.postfork');
+Route::get('/dashboard/{id}/list-fork', 'Sites\ForkController@showForkPlan')->name('fork.plan');
+Route::get('/schedule/{id}/view', 'Sites\ForkController@showForkSchedule')->name('fork.schedule');
