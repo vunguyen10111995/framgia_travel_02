@@ -27,4 +27,20 @@ class Helper
             'status' => $status,
         ];
     }
+
+    public static function upload($file, $path)
+    {
+        try {
+            if (!$file) {
+                $filename = config('setting.defaultAvatar');
+            } else {
+                $filename = $file->getClientOriginalName();
+                $file->move($path, $filename);
+            }
+            return $filename;
+        } catch (Exception $e) {
+            Log::error($e);
+            return false;
+        }
+    }
 }
