@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ForkSchedule extends Model
 {
+    protected $table = "fork_schedule";
     protected $fillable = [
         'fork_id',
         'service_id',

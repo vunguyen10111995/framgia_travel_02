@@ -152,6 +152,10 @@
                                 <p>
                                     <span>{{ trans('site.status') }}:</span>
                                     <span>{{ trans('site.inprocess') }}</span>
+                                    <a class="btn buttonTransparent" href="">{{ trans('site.clone') }}</a>
+                                    <form action="{{ route('user.fork', $plan->id) }}" method="get">
+                                        <button class="btn buttonTransparent" type="submit">{{ trans('site.fork') }}</button>
+                                    </form>
                                 </p>
                             @else
                                 <p>
@@ -159,6 +163,10 @@
                                     <span>{{ trans('site.approved') }}</span>
                                 </p>
                                 <p>
+                                <a class="btn btn-default" href="">{{ trans('site.clone') }}</a>
+                                <form action="{{ route('user.fork', $plan->id) }}" method="get">
+                                    <button class="btn btn-default" type="submit">{{ trans('site.fork') }}</button>
+                                </form>
                                     <a href="" class="btn buttonTransparent">{{ trans('site.book_now') }}</a>
                                 </p>
                             @endif

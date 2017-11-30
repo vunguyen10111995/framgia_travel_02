@@ -97,4 +97,6 @@ return [
     'manage_request_service' => 'Manage Request Service',
     'open_time' => 'Open Time',
     'close_time' => 'Close Time',
+    'clone' => 'Clone',
+    'fork' => 'Fork',
 ];

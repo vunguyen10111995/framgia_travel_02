@@ -22,22 +22,28 @@
                 <div class="form-group">
                     <label>{{ trans('admin.schedule') }}</label> &nbsp;
                     @foreach($plan->schedules as $c)
-                    <p>{{ $loop->iteration }}</p>
-                    <label>{{ trans('admin.service') }}</label>
-                    <input type="text" name="" value="{{ $c->service->name }}" class="form-control">
-                    <label>{{ trans('admin.start_at') }}</label>
-                    <input type="datetime" name="" value="{{ $c->start_at }}">
-                    <label>{{ trans('admin.end_at') }}</label>
-                    <input type="datetime" name="" value="{{ $c->end_at }}">
-                    <label>{{ trans('admin.number_of_day') }}</label>
-                    <input type="text" name="" value="{{ $c->date }}">
-                    <label>{{ trans('admin.title') }}</label>
-                    <input type="text" name="" value="{{ $c->title }}">
-                    <label>{{ trans('admin.price') }}</label>
-                    <input type="text" name="" value="{{ $c->price }} $">
-                    <label>{{ trans('admin.description') }}</label>
-                    <input type="text" name="" value="{{ $c->description }}">
+                        <p>{{ $loop->iteration }}</p>
+                        <label>{{ trans('admin.service') }}</label>
+                        <input type="text" name="" value="{{ $c->service->name }}" class="form-control">
+                        <label>{{ trans('admin.start_at') }}</label>
+                        <input type="datetime" name="" value="{{ $c->start_at }}">
+                        <label>{{ trans('admin.end_at') }}</label>
+                        <input type="datetime" name="" value="{{ $c->end_at }}">
+                        <label>{{ trans('admin.number_of_day') }}</label>
+                        <input type="text" name="" value="{{ $c->date }}">
+                        <label>{{ trans('admin.title') }}</label>
+                        <input type="text" name="" value="{{ $c->title }}">
+                        <label>{{ trans('admin.price') }}</label>
+                        <input type="text" name="" value="{{ $c->price }} $">
+                        <label>{{ trans('admin.description') }}</label>
+                        <input type="text" name="" value="{{ $c->description }}">
                     <br>
+                    @endforeach
+                    @foreach($plan->planProvinces as $p)
+                        <label>{{ trans('admin.plan') }}</label>
+                        <input type="text" name="" value="{{ $p->plan_id }}">
+                        <label>{{ trans('admin.provinces') }}</label>
+                        <input type="text" name="" value="{{ $p->province_id }}">
                     @endforeach
                 </div>
             </form>

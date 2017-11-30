@@ -27,4 +27,14 @@ class Fork extends Model
     {
         return $this->belongsTo(Plan::class, 'plan_id');
     }
+
+    public function scopeWhereUser($query, $value)
+    {
+        return $query->where('user_id', $value)->with('planProvinces.province');
+    }
+
+    public function scopeGetUser($query, $value)
+    {
+        return $query->find($value)->with('user')->get();
+    }
 }
