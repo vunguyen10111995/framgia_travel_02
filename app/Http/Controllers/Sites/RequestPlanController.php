@@ -13,6 +13,7 @@ use App\Models\Province;
 use App\Models\PlanProvince;
 use App\Models\Schedule;
 use App\Models\Comment;
+use App\Models\Rate;
 
 class RequestPlanController extends Controller
 {
@@ -82,6 +83,10 @@ class RequestPlanController extends Controller
         $schedules = Schedule::whereSchedule($id);
         $getUser = Plan::getUser($id);
         $comments = Comment::getComment($id);
+        $rates = Rate::whereRate($id);
+        $rates->average =$rates->avg('rate_point');
+        $rateAvg = number_format($rates->average, 1, ',', ' ');
+        $rateCount = count($rates);
 
         return view('sites._component.plan_detail', compact(
             'plan',
@@ -89,7 +94,9 @@ class RequestPlanController extends Controller
             'provinceFirst',
             'schedules',
             'getUser',
-            'comments'
+            'comments',
+            'rateAvg',
+            'rateCount'
         ));
     }
 

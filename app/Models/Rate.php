@@ -21,4 +21,9 @@ class Rate extends Model
     {
         return $this->belongsTo(Plan::class, 'plan_id');
     }
+
+    public function scopeWhereRate($query, $value)
+    {
+        return $query->Where('plan_id', $value)->get();
+    }
 }

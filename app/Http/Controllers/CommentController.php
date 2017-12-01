@@ -15,7 +15,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+       //
     }
 
     /**
@@ -43,9 +43,10 @@ class CommentController extends Controller
             $content = $request->content;
             $comment->content = $content;
             $comment->save();
+            $planId = $request->plan_id;
             $time = Comment::all()->pluck('created_at')->last();
 
-            return response(view('sites._component.show_comment', compact('content', 'time'))->render());
+            return response(view('sites._component.show_comment', compact('content', 'time', 'comment', 'planId'))->render());
         } catch (Exception $e) {
             $response['error'] = true;
 
@@ -84,7 +85,22 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $comment = Comment::find($id);
+            $comment->content = $request->content;
+            $content = $request->content;
+            $comment->plan_id = $request->plan_id;
+            $comment->user_id = Auth::user()->id;
+            $comment->save();
+            $planId = $request->plan_id;
+            $time = Comment::find($id)->pluck('updated_at')->last();
+            
+            return response(view('sites._component.show_comment', compact('content', 'time', 'comment', 'planId'))->render());
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
 
     /**
@@ -95,6 +111,13 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $comment = Comment::find($id);
+            $comment->delete();
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
 }
