@@ -8500,13 +8500,9 @@ margin: 0;
     height: 150px;
 }
 .centeredDiv{
-    padding: 20px;
-    background: #FFF;
-    margin-right: auto;
-    margin-left: auto;
-    width: 800px;
+    width: 100%;
     opacity: 1;
-    border: solid 5px #34bf49;
+    height: 100%;
 }
 #status {
     width: 100px;

@@ -111,7 +111,7 @@
                                             <a class="fa fa-edit change_permission" aria-hidden="true" data-toggle="modal" data-target="#myModal" value="{{ $plan->status }}" data="{{ $plan->id }}"></a> {{ ($plan->status == config('setting.status.inprogress')) ? trans('admin.inprogress') : trans('admin.approved') }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.plan.show', $plan->id) }}" type="button"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                                            <a href="{{ route('admin.plan.show', $plan->id) }}" type="button" class="btn btn-primary btn-sm view_detail" data-id={{ $plan->id }}>{{ trans('admin.view') }}</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -162,42 +162,4 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{ trans('admin.details')}}</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" id="form-2" enctype="multipart/form-data" action="{{ route('admin.plan.update', $plan->id) }}">
-                    <div>
-                        <label for="label">{{ trans('admin.fullname') }}</label>
-                        <input type="text" class="form-control" id="full_names">
-                    </div>
-                    <div>
-                        <label for="label">{{ trans('admin.email') }}</label>
-                        <input type="email" class="form-control" id="emails">
-                    </div>
-                    <div>
-                        <label for="label">{{ trans('admin.address') }}</label>
-                        <input type="text" class="form-control" id="addresss">
-                    </div>
-                    <div>
-                        <label for="label">{{ trans('admin.gender') }}</label>
-                        <input type="text" class="form-control" id="genders" selected value="">
-                    </div>
-                    <div>
-                        <label for="label">{{ trans('admin.level') }}</label>
-                        <input type="text" class="form-control" id="levels" selected value="">
-                    </div>
-                    <div>
-                        <label for="label">{{ trans('admin.status') }}</label>
-                        <input type="text" class="form-control" id="statuss" selected value="">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> 
 @endsection

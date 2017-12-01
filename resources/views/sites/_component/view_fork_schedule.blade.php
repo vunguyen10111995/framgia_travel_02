@@ -167,7 +167,7 @@
                     <div class="form-group col-md-12 service">
                         <label>{{ trans('site.number_ser') }}</label>
                         <i class="fa fa-calendar"></i>
-                        <input name="number_services" type="text" id="number-services" class="form-control" min="0" value="" placeholder="{{ trans('site.please_day') }}" disabled="">
+                        <input name="number_services" type="text" id="number-services" class="form-control" min="0" value="{{ count($fork->forkSchedules) }}" disabled="">
                     </div>
                 </div>
                 <div class="form-group">

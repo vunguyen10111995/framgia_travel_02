@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use App\Models\Province;
 use App\Models\PlanProvince;
+use App\Models\Service;
 use Auth;
 use App\Models\User;
 
@@ -80,9 +81,12 @@ class PlanController extends Controller
      */
     public function show($id)
     {   
-        $plan = Plan::with(['schedules', 'user', 'schedules.service'])->findOrFail($id);
+        $plan = Plan::with(['planProvinces', 'schedules', 'schedules.service.province'])->find($id);
+        $choices = $plan->planProvinces;
+        $services = Service::all();
+        $provinces = Province::all();
 
-        return view('admin._component.schedule.manage_schedule', compact('plan'));
+        return view('admin._component.plan.view', compact('plan', 'choices', 'services', 'provinces'));
     }
 
     /**

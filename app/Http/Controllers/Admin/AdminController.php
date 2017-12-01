@@ -24,6 +24,10 @@ class AdminController extends Controller
         return view('admin._component.user.manage_user', compact('users'));
     }
 
+    public function dashboard()
+    {
+        return view('admin._component.index');
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -11,14 +11,10 @@
 |
 */
 
-Route::get('/', 'Sites\HomeController@index')->name('home');
-Route::get('/search', 'Sites\HomeController@searchAjax')->name('search');
-Route::get('/admin', function() {
-    return view('admin._component.test')->name('admin');
-});
 Route::group(['prefix' => 'admin', 'as' => 'admin.',  
     'namespace' => 'Admin'], function() {
         Route::resource('/user', 'AdminController');
+        Route::get('/', 'AdminController@dashboard');
         Route::post('/user/updateLevel', 'AdminController@updateLevel')->name('user.updateLevel');
         Route::post('/user/updateStatus', 'AdminController@updateStatus')->name('user.updateStatus');
         Route::get('/category', 'CategoryController@index')->name('category.index');
@@ -97,7 +93,11 @@ Route::group(['prefix' => 'plan'], function () {
     Route::resource('comment', 'CommentController');
     Route::post('/{id}/comment', 'CommentController@store')->name('use.plan.comment');
 });
-Route::get('/plan/{id}/fork', 'Sites\ForkController@showFork')->name('user.fork');
-Route::post('/plan/{id}/fork', 'Sites\ForkController@postFork')->name('user.postfork');
-Route::get('/dashboard/{id}/list-fork', 'Sites\ForkController@showForkPlan')->name('fork.plan');
-Route::get('/schedule/{id}/view', 'Sites\ForkController@showForkSchedule')->name('fork.schedule');
+Route::group(['namespace' => 'Sites'], function() {
+    Route::get('/plan/{id}/fork', 'ForkController@showFork')->name('user.fork');
+    Route::post('/plan/{id}/fork', 'ForkController@postFork')->name('user.postfork');
+    Route::get('/dashboard/{id}/list-fork', 'ForkController@showForkPlan')->name('fork.plan');
+    Route::get('/schedule/{id}/view', 'ForkController@showForkSchedule')->name('fork.schedule');
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/search', 'HomeController@searchAjax')->name('search');
+});
