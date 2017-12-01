@@ -96,6 +96,14 @@ Route::group(['prefix' => 'plan'], function () {
     Route::get('/{id}/detail', 'Sites\RequestPlanController@show')->name('user.plan.detail');
     Route::resource('comment', 'CommentController');
     Route::post('/{id}/comment', 'CommentController@store')->name('use.plan.comment');
+    Route::post('/comment/{id}/delete', 'CommentController@destroy')->name('user.delete.comment');
+    Route::get('/comment/{id}/update', 'CommentController@update')->name('user.update.comment');
+    Route::get('/{id}/rate', 'Sites\RateController@store')->name('user.plan.rate');
+});
+
+Route::group(['prefix' => 'booking'], function () {
+    Route::resource('booking', 'BookingController');
+    Route::get('/', 'Sites\BookingController@index')->name('user.booking');
 });
 Route::get('/plan/{id}/fork', 'Sites\ForkController@showFork')->name('user.fork');
 Route::post('/plan/{id}/fork', 'Sites\ForkController@postFork')->name('user.postfork');
