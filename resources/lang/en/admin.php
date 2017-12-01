@@ -99,4 +99,5 @@ return [
     'close_time' => 'Close Time',
     'clone' => 'Clone',
     'fork' => 'Fork',
+    'welcome_admin' => 'Welcome To Admin',
 ];
