@@ -189,12 +189,10 @@
         <div class="col-md-3 .col-md-pull-9">
             <div class="sidebar"> 
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="">{{ trans('site.my_plans') }}</a></li>
+                    <li><a href="" id="list_plan">{{ trans('site.my_plans') }}</a></li>
                     <li><a href="" id="list_fork" value="{{ Auth::user()->id }}">{{ trans('site.my_fork_plans') }}</a></li>
-                    <li><a href="">{{ trans('site.request_services') }}</a></li>
-                    <li><a href="">{{ trans('site.booking') }}</span></a></li>
-                    <li><a href="">{{ trans('site.my_wishlist') }}</a></li>
-                    <li><a href="">{{ trans('site.logout') }}</a></li>
+                    <li><a href="" id="list_request_service" value="{{ Auth::user()->id }}">{{ trans('site.request_services') }}</a></li>
+                    <li><a href="" id="list_booking" value="{{ Auth::user()->id }}">{{ trans('site.booking') }}</span></a></li>
                 </ul>
             </div>
         </div>
@@ -206,6 +204,7 @@
             <div class="wrap">
                 @foreach($plans as $plan)
                     <a href="{{ route('user.schedule', $plan->id) }}" class="content-plan">
+                    <h5 class="title-plan">{{ $plan->title }}</h5>
                         <div class="tile">
                             <h1 class="del-plan">
                                 <i class="fa fa-times-circle" aria-hidden="true"></i>
@@ -229,9 +228,11 @@
                             <div class="create-schedule">{{ trans('site.create_schedule') }}</div>
                         </div>
                     </a>
-                    <h5 class="title-plan">{{ trans('site.fork') }}</h5>
-                    <i class="fa fa-eye" aria-hidden="true"> &nbsp;  {{ count($plan->forks) }}</i>
-                    <h5 class="title-plan">{{ $plan->title }}</h5>
+                    <div>
+                        <span class="title-plan">{{ trans('site.fork') }}</span>
+                        <p class="fa fa-eye" aria-hidden="true" style="margin-left: 120px"> &nbsp;  {{ count($plan->forks) }}</p>
+                        <h5 class="title-plan">{{ trans('site.status') }} &nbsp; <span style="margin-left: 100px;">{{ $plan->status == 0 ? "Inprogress" : "Approved" }}</span></h5>
+                    </div>
                 @endforeach
                 {!! $plans->render() !!}
             </div>

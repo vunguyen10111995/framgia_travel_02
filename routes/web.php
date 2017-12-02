@@ -12,11 +12,12 @@
 */
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.',  
-    'namespace' => 'Admin'], function() {
+    'namespace' => 'Admin', 'middleware' => 'admin'], function() {
         Route::resource('/user', 'AdminController');
         Route::get('/', 'AdminController@dashboard');
         Route::post('/user/updateLevel', 'AdminController@updateLevel')->name('user.updateLevel');
         Route::post('/user/updateStatus', 'AdminController@updateStatus')->name('user.updateStatus');
+        Route::post('/user/{id}', 'AdminController@update')->name('user.update');
         Route::get('/category', 'CategoryController@index')->name('category.index');
         Route::post('/category/updateStatus', 'CategoryController@updateStatus')->name('category.updateStatus');
         Route::post('/category/store', 'CategoryController@store')->name('category.store');
@@ -36,7 +37,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',
         Route::get('/request-service/search', 'RequestServiceController@search')->name('request.service.search');
         Route::get('/request-service/filter', 'RequestServiceController@filter')->name('request.service.filter');
 });
-Route::group(['namespace' => 'Admin'], function() {
+Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function() {
     Route::get('/service/filter', 'ServiceController@filter');
     Route::get('/search/user', 'AdminController@search');
     Route::get('/province/search', 'ProvinceController@search');
@@ -57,7 +58,7 @@ Route::group(['prefix' => 'account'], function () {
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });
 
-Route::group(['prefix' => 'profile'], function () {
+Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('/', 'Sites\UserController@index')->name('user.profile');
     Route::post('/password/{id}', 'Sites\UserController@changePassword')->name('user.changePassword');
     Route::post('/avatar/{id}', 'Sites\UserController@changeAvatar')->name('user.changeAvatar');
@@ -70,16 +71,16 @@ Route::group(['prefix' => 'profile'], function () {
     Route::get('/setting', 'Sites\UserController@setting')->name('user.setting');
 });
 
-Route::group(['prefix' => 'dashboard'], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/{id}', 'Sites\DashboardController@show')->name('user.dashboard');
 });
 
-Route::group(['prefix' => 'requestservice'], function () {
+Route::group(['prefix' => 'requestservice', 'middleware' => 'auth'], function () {
     Route::get('/', 'Sites\RequestServicesController@index')->name('user.request');
     Route::post('/', 'Sites\RequestServicesController@store')->name('user.storeRequest');
 });
 
-Route::group(['prefix' => 'schedule'], function () {
+Route::group(['prefix' => 'schedule', 'middleware' => 'auth'], function () {
     Route::get('/{id}/add', 'Sites\CreateScheduleController@show')->name('user.schedule');
     Route::post('/update/{id}', 'Sites\CreateScheduleController@store')->name('schedule.postSchedule');
     Route::get('/result', 'AjaxController@getResult')->name('schedule.result');
@@ -101,10 +102,13 @@ Route::group(['prefix' => 'booking'], function () {
     Route::resource('booking', 'BookingController');
     Route::get('/', 'Sites\BookingController@index')->name('user.booking');
 });
+
 Route::group(['namespace' => 'Sites'], function() {
     Route::get('/plan/{id}/fork', 'ForkController@showFork')->name('user.fork');
     Route::post('/plan/{id}/fork', 'ForkController@postFork')->name('user.postfork');
     Route::get('/dashboard/{id}/list-fork', 'ForkController@showForkPlan')->name('fork.plan');
+    Route::get('/dashboard/{id}/list-request-service', 'ForkController@showRequestService')->name('show.request.service');
+    Route::get('/dashboard/{id}/detail-request-service', 'ForkController@showDetailRequestService')->name('show.detail.request.service');
     Route::get('/schedule/{id}/view', 'ForkController@showForkSchedule')->name('fork.schedule');
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/search', 'HomeController@searchAjax')->name('search');

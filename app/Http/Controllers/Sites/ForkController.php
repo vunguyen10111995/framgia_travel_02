@@ -11,6 +11,7 @@ use App\Models\Province;
 use App\Models\Plan;
 use App\Models\User;
 use App\Models\ForkSchedule;
+use App\Models\RequestService;
 use Auth;
 
 class ForkController extends Controller
@@ -68,6 +69,15 @@ class ForkController extends Controller
         return response($html);
     }
 
+    public function showRequestService($id)
+    {
+        $user = User::find($id);
+        $request_services = RequestService::where('user_id', '=' , $user->id )->get();
+        $html = view('sites._component.show_request_service', compact('request_services'))->render();
+        
+        return response($html);
+    }
+
     public function showForkSchedule(Request $request, $id)
     {
         $fork = Fork::with(['plan.planProvinces', 'forkSchedules', 'forkSchedules.service.province'])->find($id);
@@ -76,5 +86,12 @@ class ForkController extends Controller
         $provinces = Province::all();
         
         return view('sites._component.view_fork_schedule', compact(['fork', 'choices', 'services', 'provinces']));
+    }
+
+    public function showDetailRequestService(Request $request, $id)
+    {
+        $request_service = RequestService::with(['category', 'province'])->find($id);
+
+        return view('sites._component.view_request_service', compact('request_service'));
     }
 }

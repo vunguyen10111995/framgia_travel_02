@@ -10,6 +10,23 @@ $(document).ready(function() {
         });
     });
 
+    $(document).on('click', '.nav-sidebar li a', function(e) {
+        e.preventDefault();
+        $(this).parent().css('background', 'green');
+        $(this).parent().siblings().css('background', 'white');
+    });
+
+    $(document).on('click', '#list_request_service', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('value');
+        $.ajax({
+            url: '/dashboard/'+ id +'/list-request-service',
+            type: 'GET',
+        }).done(function(data) {
+            $('#show_info').html(data);
+        });
+    });
+    
     $(function() {   
         $('.select2').select2();
     });

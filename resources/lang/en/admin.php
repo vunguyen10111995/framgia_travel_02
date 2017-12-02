@@ -100,4 +100,5 @@ return [
     'clone' => 'Clone',
     'fork' => 'Fork',
     'welcome_admin' => 'Welcome To Admin',
+    'view_request_service' => 'View Request',
 ];

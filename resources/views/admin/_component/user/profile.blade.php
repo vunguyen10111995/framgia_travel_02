@@ -5,52 +5,49 @@
 @endsection
 
 @section('script')
-    {!! Html::script('js/manage_plan.js') !!}
+    {!! Html::script('js/profile_admin.js') !!}
 @endsection
 
 @section('content')
-    <div class="max">
-        <div id="tabs-container">
-            <ul class="tabs-menu">
-                <li class="current">
-                    <a href="#tab-1">{{ trans('admin.plan') }}</a>
-                </li>
-                <li>
-                    <a href="#tab-2">{{ trans('admin.profile') }}</a>
-                </li>
-                <li>
-                    <a href="#tab-3">{{ trans('admin.gallery') }}</a>
-                </li>
-                <li>
-                    <a href="#tab-4">{{ trans('admin.request_services') }}</a>
-                </li>
-            </ul>
-            <div class="tab">
-                <div id="tab-1" class="tab-content">
-                    <h2>{{ trans('admin.your_plans') }}</h2>
-                    <div class="row content-3">
-                        @foreach($admin->plans as $plan)
-                            <div class="col-md-6 card-deck">
-                                <div class="card">
-                                    <a href="{{ route('admin.plan.edit', $plan->id) }}"><img class="card-img-top" src="{{ asset('images/avatar.png') }}"></a>
-                                    <div class="card-block" style="text-align: center">
-                                        <h4 class="card-title">{{ trans('admin.plan') }} {{ $plan->id }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div id="tab-2" class="tab-content">
-                    <p></p>
-                </div>
-                <div id="tab-3" class="tab-content">
-                    <p></p>
-                </div>
-                <div id="tab-4" class="tab-content">
-                    <p></p>
-                </div>
-            </div>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>{{ trans('admin.profile') }}</h2>
         </div>
     </div>
+    <div class="panel-body">
+        <div class="row">
+            <form class="form-horizontal" action="{{ route('admin.user.update', $admin->id) }}" enctype="multipart/form-data" method="POST" id="form-2">
+            {{ csrf_field() }}
+                <div class="form-group">
+                        <input type="file" id="file" name="avatar">
+                        <div id="image_display">
+                            <img src="{{ $admin->avatar }}" id="image" alt="" name="image">
+                        </div>
+                </div>
+                <div class="col-md-7 form-group">
+                    <label>{{ trans('admin.id') }}</label>
+                    <input type="text" value="{{ $admin->id }}" class="form-control" disabled="" id="id">
+                </div>
+                <div class="col-md-7 form-group">
+                    <label>{{ trans('admin.name') }}</label>
+                    <input type="text" id="full_name" value="{{ $admin->full_name }}" class="form-control" name="full_name">
+                </div>
+                    <div class="col-md-7 form-group">
+                        <label>{{ trans('admin.email') }}</label>
+                        <input type="text" value="{{ $admin->email }}" class="form-control" id="email" name="email">
+                    </div>                
+                    <div class="col-md-7 form-group">
+                        <label>{{ trans('admin.address') }}</label>
+                        <input type="text" value="{{ $admin->address }}" class="form-control" id="address" name="address">
+                    </div>
+                <div class="form-group col-md-7">
+                    <label>{{ trans('admin.gender') }}</label>
+                    <select class="form-control gender" id="gender" name="gender" value="{{ $admin->gender }}">
+                    </select>
+                </div>
+                    <div class="col-md-1 buttonUpdate">
+                        <input class="btn btn-success update" type="submit" value="Update">
+                    </div>
+            </form>
+        </div>
 @endsection
