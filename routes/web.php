@@ -96,11 +96,10 @@ Route::group(['prefix' => 'plan'], function () {
     Route::post('/comment/{id}/delete', 'CommentController@destroy')->name('user.delete.comment');
     Route::get('/comment/{id}/update', 'CommentController@update')->name('user.update.comment');
     Route::get('/{id}/rate', 'Sites\RateController@store')->name('user.plan.rate');
-});
-
-Route::group(['prefix' => 'booking'], function () {
-    Route::resource('booking', 'BookingController');
-    Route::get('/', 'Sites\BookingController@index')->name('user.booking');
+    Route::get('/{id}/booking', 'Sites\BookingController@show')->name('user.plan.booking');
+    Route::get('/booking/adult', 'Sites\BookingController@getAdult')->name('user.booking.adult');
+    Route::get('/booking/child', 'Sites\BookingController@getChild')->name('user.booking.child');
+    Route::post('/{id}/booking/add', 'Sites\BookingController@store')->name('user.plan.bookingstore');
 });
 
 Route::group(['namespace' => 'Sites'], function() {
