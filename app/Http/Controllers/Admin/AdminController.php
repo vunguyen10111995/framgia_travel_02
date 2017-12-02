@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Helpers\helper;
+use App\Http\Requests\admin\ProfileAdmin;
 
 class AdminController extends Controller
 {
@@ -62,11 +63,8 @@ class AdminController extends Controller
             'level' => $request->level,
             'status' => $request->status,
         ];
-        if ($request->hasFile('image')) {
-            $file_name = Helper::importFile($request->file('image'), config('setting.defaultPath'));
-            $data['avatar'] = $file_name;
-        }
-        
+        $file_name = helper::upload($request->file('avatar'), config('setting.defaultPath'));
+        $data['avatar'] = $file_name;
         $user = User::create($data);
 
         return response()->json($user);
@@ -85,10 +83,15 @@ class AdminController extends Controller
 
     public function showData(Request $request)
     {
-
+        try {
             $user = User::find($request->id);
 
             return response()->json($user);
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
     /**
      * Show the form for editing the specified resource.
@@ -136,7 +139,24 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $admin = User::find($request->id);
+            $admin->full_name = $request->full_name;
+            $admin->email = $request->email;
+            $admin->address = $request->address;
+            $admin->gender = $request->gender;
+            if ($request->hasFile('avatar')) {
+                $file_name = helper::upload($request->file('avatar'), config('setting.defaultPath'));
+                $admin->avatar = $file_name;
+            }
+            $admin->save();
+            
+            return response()->json($admin);
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
 
     /**
@@ -152,12 +172,18 @@ class AdminController extends Controller
 
     public function search(Request $request)
     {   
-        $key = $request->key;
-        $users = User::where('full_name', 'like', '%'. $key .'%')
-            ->orWhere('email', 'like', '%'. $key .'%')->get();
-        $html = view('admin._component.user.search', compact('users'))->render();
+        try {
+            $key = $request->key;
+            $users = User::where('full_name', 'like', '%'. $key .'%')
+                ->orWhere('email', 'like', '%'. $key .'%')->get();
+            $html = view('admin._component.user.search', compact('users'))->render();
 
-        return response($html);
+            return response($html);
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
 
     public function filter(Request $request) {

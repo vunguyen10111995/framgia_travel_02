@@ -9,6 +9,7 @@ use App\Models\Province;
 use App\Models\PlanProvince;
 use App\Models\Service;
 use Auth;
+use App\Helpers\helper;
 use App\Models\User;
 
 class PlanController extends Controller
@@ -97,9 +98,15 @@ class PlanController extends Controller
      */
     public function edit($id)
     {
-        $plan = Plan::findOrFail($id);
+        try {
+            $plan = Plan::findOrFail($id);
         
-        return view('admin._component.schedule.edit', compact('plan'));
+            return view('admin._component.schedule.edit', compact('plan'));
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
 
     /**
@@ -111,9 +118,15 @@ class PlanController extends Controller
      */
     public function update(Request $request)
     {   
-        $plan = Plan::find($request->id)->update($request->all());
+        try {
+            $plan = Plan::find($request->id)->update($request->all());
 
-        return response()->json($plan);
+            return response()->json($plan);
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
 
     /**
@@ -129,29 +142,46 @@ class PlanController extends Controller
 
     public function filter(Request $request)
     {
-        $status = $request->key;
-        $plans = Plan::where('status', '=', $status)->get();
-        $view = view('admin._component.plan.search', compact('plans'))->render();
+        try {
+            $status = $request->key;
+            $plans = Plan::where('status', '=', $status)->get();
+            $view = view('admin._component.plan.search', compact('plans'))->render();
 
-        return response($view);
+            return response($view);
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
 
     public function search(Request $request)
     {
+        try {
+            $key = $request->key;
 
-        $key = $request->key;
+            $plans = Plan::search($key)->get();
+            
+            $result = view('admin._component.plan.search', compact('plans'));
 
-        $plans = Plan::search($key)->get();
-        
-        $result = view('admin._component.plan.search', compact('plans'));
+            return response($result);
+        } catch (Exception $e) {
+            $response['error'] = true;
 
-        return response($result);
+            return response()->json($response);
+        }
     }
 
     public function profile($id)
     {
-        $admin = User::with('plans')->findOrFail($id);
+        try {
+            $admin = User::find($id);
 
-        return view('admin._component.user.profile', compact('admin'));
+            return view('admin._component.user.profile', compact('admin'));
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
 }
