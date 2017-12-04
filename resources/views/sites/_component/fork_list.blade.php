@@ -7,7 +7,7 @@
             <img src="{{ asset('images/avatar.png') }}">
             <div class="text">
                 <h3 class="animate-text">
-                    {{trans('admin.plan') }} {{ $loop->iteration}}
+                    {{ trans('admin.plan') }} {{ $loop->iteration }}
                 </h3>
             </div>
             <div class="create-schedule">{{ trans('site.view_schedule') }}</div>

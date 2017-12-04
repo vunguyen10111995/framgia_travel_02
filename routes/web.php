@@ -36,6 +36,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.',
         Route::post('/request-service/{id}', 'RequestServiceController@update')->name('request.service.update');
         Route::get('/request-service/search', 'RequestServiceController@search')->name('request.service.search');
         Route::get('/request-service/filter', 'RequestServiceController@filter')->name('request.service.filter');
+        Route::get('/change-password/{id}', 'AdminController@getPassword')->name('get.password');
+        Route::post('/change-password/{id}', 'AdminController@changePassWord')->name('change.password');
 });
 Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function() {
     Route::get('/service/filter', 'ServiceController@filter');
@@ -106,6 +108,7 @@ Route::group(['namespace' => 'Sites'], function() {
     Route::get('/plan/{id}/fork', 'ForkController@showFork')->name('user.fork');
     Route::post('/plan/{id}/fork', 'ForkController@postFork')->name('user.postfork');
     Route::get('/dashboard/{id}/list-fork', 'ForkController@showForkPlan')->name('fork.plan');
+    Route::get('/dashboard/{id}/list-plan', 'ForkController@showListPlan')->name('list.plan');
     Route::get('/dashboard/{id}/list-request-service', 'ForkController@showRequestService')->name('show.request.service');
     Route::get('/dashboard/{id}/detail-request-service', 'ForkController@showDetailRequestService')->name('show.detail.request.service');
     Route::get('/schedule/{id}/view', 'ForkController@showForkSchedule')->name('fork.schedule');

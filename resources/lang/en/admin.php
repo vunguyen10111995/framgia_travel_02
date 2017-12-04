@@ -101,4 +101,8 @@ return [
     'fork' => 'Fork',
     'welcome_admin' => 'Welcome To Admin',
     'view_request_service' => 'View Request',
+    'change_password' => 'Change Password',
+    'new_password' => 'New Password',
+    're_new_password' => 'New Password Again',
+    'guide' => 'Guide',
 ];

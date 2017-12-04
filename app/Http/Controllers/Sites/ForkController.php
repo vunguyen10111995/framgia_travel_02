@@ -94,4 +94,13 @@ class ForkController extends Controller
 
         return view('sites._component.view_request_service', compact('request_service'));
     }
+
+    public function showListPlan(Request $request)
+    {
+        $user = User::find($request->id);
+        $plans = Plan::where('user_id', '=' , $user->id)->get();
+        $html = view('sites._component.view_list_plan', compact('plans'))->render();
+
+        return response($html);
+    }
 }

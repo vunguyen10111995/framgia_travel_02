@@ -8480,7 +8480,7 @@ margin: 0;
     height: 150px;
 }
 .filter_data {
-    margin-top: 10px;
+    margin-top: -90px; 
 }
 .title-provinces #name_province {
     width: 30%;
@@ -8509,7 +8509,7 @@ margin: 0;
 }
 .buttonUpdate {
     margin-top: 100px;
-    margin-left: -200px;
+    margin-left: 350px;
 }
 #image_display #image {
     width: 30%;
@@ -8517,4 +8517,10 @@ margin: 0;
 }
 .panel-body .row {
     margin-bottom: 100px;
+}
+.fadeInRight {
+    margin-top: -90px;
+}
+#message {
+    color: red;
 }

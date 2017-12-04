@@ -27,6 +27,17 @@ $(document).ready(function() {
         });
     });
     
+    $(document).on('click', '#list_plan', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('value');
+        $.ajax({
+            url : '/dashboard/'+ id + '/list-plan',
+            type: 'GET',
+        }).done(function(data) {
+            $('#show_info').html(data);
+        });
+    });
+
     $(function() {   
         $('.select2').select2();
     });
