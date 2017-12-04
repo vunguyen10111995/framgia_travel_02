@@ -58,4 +58,37 @@ $(document).ready(function() {
             }, 0);
         });
     });
+
+    $(document).on('click', 'updatepassword', function(event) {
+        event.preventDefault();
+        var id = $('.hidden_id').val();
+        $.ajax({
+            url: '/admin/change-password/' + id,
+            type: 'POST',
+            data: {
+                new_password: $('#new_password').val(),
+                re_new_password: $('#re_new_password').val(),
+            }
+        }).done(function(data) {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Update successfully !');
+            }, 0);
+        }).fail(function(data) {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.error('Fail !');
+            }, 0);
+        });
+    });
 });

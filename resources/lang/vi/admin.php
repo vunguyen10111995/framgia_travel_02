@@ -94,4 +94,12 @@ return [
     'number_of_day' => 'Số Ngày',
     'manage_request_service' => 'Quản Lý Yêu Cầu',
     'open_time' => 'Giờ Mở Cửa',
+    'close_time' => 'Giờ đóng cửa',
+    'clone' => 'Clone',
+    'fork' => 'Fork',
+    'welcome_admin' => 'Xin Chào Admin',
+    'view_request_service' => 'Xem Các Yêu Cầu',
+    'change_password' => 'Đổi Mật Khẩu',
+    'new_password' => 'Mật Khẩu Mới',
+    're_new_password' => 'Nhập Lại Mật Khẩu Mới',
 ];

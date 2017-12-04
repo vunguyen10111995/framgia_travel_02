@@ -187,9 +187,9 @@
     </div>
     <div class="container" id="content-dashboard">
         <div class="col-md-3 .col-md-pull-9">
-            <div class="sidebar"> 
+            <div class="sidebar">
                 <ul class="nav nav-sidebar">
-                    <li><a href="" id="list_plan">{{ trans('site.my_plans') }}</a></li>
+                    <li><a href="" id="list_plan" value="{{ Auth::user()->id }}">{{ trans('site.my_plans') }}</a></li>
                     <li><a href="" id="list_fork" value="{{ Auth::user()->id }}">{{ trans('site.my_fork_plans') }}</a></li>
                     <li><a href="" id="list_request_service" value="{{ Auth::user()->id }}">{{ trans('site.request_services') }}</a></li>
                     <li><a href="" id="list_booking" value="{{ Auth::user()->id }}">{{ trans('site.booking') }}</span></a></li>
@@ -230,11 +230,32 @@
                     </a>
                     <div>
                         <span class="title-plan">{{ trans('site.fork') }}</span>
-                        <p class="fa fa-eye" aria-hidden="true" style="margin-left: 120px"> &nbsp;  {{ count($plan->forks) }}</p>
+                        <a class="fa fa-eye" aria-hidden="true" style="margin-left: 120px" id="view_fork" data-toggle="modal" data-target="#view_list_fork" data-id="{{ $plan->id }}"> &nbsp;  {{ count($plan->forks) }}
+                        </a>
                         <h5 class="title-plan">{{ trans('site.status') }} &nbsp; <span style="margin-left: 100px;">{{ $plan->status == 0 ? "Inprogress" : "Approved" }}</span></h5>
                     </div>
                 @endforeach
                 {!! $plans->render() !!}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="view_list_fork" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ trans('site.close') }}</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{ trans('site.list_fork') }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                @foreach($plan->forks as $c)
+                    <label class="col-md-3">{{ $loop->iteration }}</label>
+                    <div class="col-md-9">
+                        <input type="text" name="" class="form-control" value="{{ $c->user->full_name }}">
+                    </div>
+                @endforeach
+                </div>
             </div>
         </div>
     </div>

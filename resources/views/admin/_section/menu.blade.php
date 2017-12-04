@@ -12,7 +12,7 @@
                                 <strong class="font-bold">{{ Auth::user()->full_name }}
                                 </strong>
                             </span> 
-                            <span class="text-muted text-xs block">Admin 
+                            <span class="text-muted text-xs block">{{ trans('admin.admin') }} 
                                 <b class="caret"></b>
                             </span> 
                         </span> 
@@ -23,7 +23,11 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="login.html">{{ trans('admin.logout') }}</a>
+                            <a href="{{ route('admin.get.password', Auth::user()->id) }}">{{ trans('admin.change_password') }}</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ route('logout') }}">{{ trans('admin.logout') }}</a>
                         </li>
                     </ul>
                 </div>

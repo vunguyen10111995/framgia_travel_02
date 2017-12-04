@@ -111,7 +111,9 @@ class AdminController extends Controller
             $user->level = $request->level;
             $user->save();
 
-            return response()->json($user);
+            $html = view('admin._component.user.update_level', compact('user'))->render();
+            
+            return response($html);
         } catch (Exception $e) {
             echo $e->get_message();
         }
@@ -192,5 +194,31 @@ class AdminController extends Controller
         $view = view('admin._component.user.search', compact('users'))->render();
 
         return response($view);
+    }
+
+    public function getPassword($id)
+    {
+        $user = User::find($id);
+
+        return view('admin._component.user.password', compact('user'));
+    }
+
+    public function changePassWord(Request $request)
+    {
+        $this->validate($request, [
+            'new_password' => 'required|min:6|max:20',
+            're_new_password' => 'required|min:6|max:20|same:new_password',
+        ]);
+        try {
+            $user = User::findOrFail($request->id);
+            $user->password = $request->new_password;
+            $user->save();
+            
+            return redirect()->back()->with('message', 'UpdateSuccessfully');
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
     }
 }

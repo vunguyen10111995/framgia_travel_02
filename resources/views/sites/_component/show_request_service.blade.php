@@ -7,7 +7,10 @@
             <img src="{{ asset('images/avatar.png') }}">
             <div class="text">
                 <h3 class="animate-text">
-                    {{trans('admin.request_services') }} {{ $loop->iteration}}
+                    {{ trans('admin.request_services') }} {{ $loop->iteration }}
+                </h3>
+                <h3 class="animate-text">
+                    <p>{{ $request_service->name }}</p>
                 </h3>
             </div>
             <div class="create-request-service">{{ trans('admin.view_request_service') }}</div>
