@@ -60,6 +60,25 @@ $(document).ready(function() {
         }).done(function(data) {
             $('#myModal').modal('hide');
             $('.'+id).replaceWith(data);
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Update successfully !');
+            }, 0);
+        }).fail(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.error('Fail !');
+            }, 0);
         });
     });
 
@@ -76,22 +95,62 @@ $(document).ready(function() {
         }).done(function(data) {
             $('#addValue').modal('hide');
             $('tbody').append(data);
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Create successfully !');
+            }, 0);
+        }).fail(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.error('Fail !');
+            }, 0);
         });
     });
 
     $(document).on('click', '.updateValue', function(e){
         e.preventDefault();
+        var id = $('#form-2 #id').val();
         $.ajax({
             url: '/admin/category/update',
             data: {
                 _token: $('input[name=_token]').val(),
-                id: $('#form-2 #id').val(),
+                id: id,
                 name: $('#form-2 #name').val(),
                 status: $('#form-2 #select_status').val(),
             },
             type: 'POST',
         }).done(function(data) {
             $('#viewModal').modal('hide');
+            $('.'+id).replaceWith(data);
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Update successfully !');
+            }, 0);
+        }).fail(function(data) {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.error('Fail !');
+            }, 0);
         });
     });
 

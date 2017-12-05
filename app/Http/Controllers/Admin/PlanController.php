@@ -48,7 +48,8 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {   
-        $data = [
+        try {
+            $data = [
             'user_id' => Auth::user()->id,
             'title' => $request->title,
             'description' => $request->description,
@@ -60,18 +61,23 @@ class PlanController extends Controller
             'status' => 0,
         ];
         
-        $plan = Plan::create($data);
+            $plan = Plan::create($data);
+            $provinces = is_array($request->province) ? $request->province : [];
+            foreach ($provinces as $province) {
+                    $plan_province = new PlanProvince();
+                    $plan_province->province_id = $province;
+                    $plan_province->plan_id = $plan['id'];
+                    $plan_province->save();
+                }
+            $result = view('admin._component.plan.update_status', compact('plan'));
+
+            return response($result);
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
         
-        $provinces = is_array($request->province) ? $request->province : [];
-
-        foreach ($provinces as $province) {
-                $plan_province = new PlanProvince();
-                $plan_province->province_id = $province;
-                $plan_province->plan_id = $plan['id'];
-                $plan_province->save();
-            }
-
-        return response()->json($plan);
     }
 
     /**

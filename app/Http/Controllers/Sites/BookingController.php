@@ -71,4 +71,13 @@ class BookingController extends Controller
 
         DB::commit();
     }
+
+    public function showListBooking()
+    {
+        $user = User::find($request->id);
+        $bookings = Booking::where('user_id', '=' , $user->id)->get();
+        $html = view('sites._component.view_booking', compact('bookings'))->render();
+
+        return response($html);
+    }
 }

@@ -62,9 +62,9 @@ class ServiceController extends Controller
             $data['image'] = $file_name;
         }
         $service = Service::create($data);
-        $response['data'] = $service;
+        $html = view('admin._component.service.add_service', compact('service'));
 
-        return response()->json($response);
+        return response($html);
         } catch (Exception $e) {
             $response['error'] = true;
 
@@ -103,25 +103,23 @@ class ServiceController extends Controller
      */
     public function update(ServiceRequest $request, $id)
     {
-        $data = Service::find($request->id);
+        $service = Service::find($request->id);
         $response = Helper::messageException();
         try {
             if ($request->hasFile('avatar')) {
                 $file_name = Helper::importFile($request->file('avatar'), config('setting.defaultPath'));
-                $data->image = $file_name;
+                $service->image = $file_name;
             }
-            $data->name = $request->name;
-            $data->category_id = $request->category;
-            $data->province_id = $request->province;
-            $data->price = $request->price;
-            $data->rate = $request->rate;
-            $data->description = $request->description;
-            $data->save();
-            
-            $response['data'] = $data;
-            $response['status'] = 200;
+            $service->name = $request->name;
+            $service->category_id = $request->category;
+            $service->province_id = $request->province;
+            $service->price = $request->price;
+            $service->rate = $request->rate;
+            $service->description = $request->description;
+            $service->save();
+            $html = view('admin._component.service.add_service', compact('service'));
 
-            return response()->json($response);
+            return response($html);
         } catch (Exception $e) {
             $response['error'] = true;
 

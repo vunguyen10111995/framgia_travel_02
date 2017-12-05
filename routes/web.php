@@ -109,6 +109,7 @@ Route::group(['namespace' => 'Sites'], function() {
     Route::post('/plan/{id}/fork', 'ForkController@postFork')->name('user.postfork');
     Route::get('/dashboard/{id}/list-fork', 'ForkController@showForkPlan')->name('fork.plan');
     Route::get('/dashboard/{id}/list-plan', 'ForkController@showListPlan')->name('list.plan');
+    Route::get('/dashboard/{id}/list-booking', 'BookingController@showListBooking')->name('list.booking');
     Route::get('/dashboard/{id}/list-request-service', 'ForkController@showRequestService')->name('show.request.service');
     Route::get('/dashboard/{id}/detail-request-service', 'ForkController@showDetailRequestService')->name('show.detail.request.service');
     Route::get('/schedule/{id}/view', 'ForkController@showForkSchedule')->name('fork.schedule');

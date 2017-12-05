@@ -58,6 +58,25 @@ $(document).ready(function() {
         }).done(function(data) {
             $('#myModal').modal('hide');
             $('.'+id).replaceWith(data);
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Update successfully !');
+            }, 0);
+        }).fail(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.error('Fail !');
+            }, 0);
         })
     });
 
@@ -104,8 +123,18 @@ $(document).ready(function() {
                     $('#select_province').val('');
                     $('.select_province').selectpicker('val', '');
                     $('#addValue').modal('hide');
+                    $('tbody').append(data);
+                    setTimeout(function() {
+                        toastr.options = {
+                            closeButton: true,
+                            progressBar: true,
+                            showMethod: 'slideDown',
+                            timeOut: 4000
+                        };
+                        toastr.success('Create successfully !');
+                    }, 0);
                 }
-            })
+            });
         }
     });
 

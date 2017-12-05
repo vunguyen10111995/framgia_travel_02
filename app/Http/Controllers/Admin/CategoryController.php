@@ -48,12 +48,19 @@ class CategoryController extends Controller
 
     public function update(Request $request)
     {
-        $category = Category::find($request->id);
-        $category->name = $request->name;
-        $category->status = $request->status;
-        $category->save();
+        try {
+            $category = Category::findOrFail($request->id);
+            $category->name = $request->name;
+            $category->status = $request->status;
+            $category->save();
+            $html = view('admin._component.category.update_status', compact('category'))->render();
+                
+            return response($html);
+        } catch (Exception $e) {
+            $response['error'] = true;
 
-        return response()->json($category);
+            return response()->json($response);
+        }
     }
 
     public function delete()

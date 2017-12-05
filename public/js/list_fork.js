@@ -27,6 +27,17 @@ $(document).ready(function() {
         });
     });
     
+    $(document).on('click', '#list_booking', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('value');
+        $.ajax({
+            url: '/dashboard/'+ id +'/list-booking',
+            type: 'GET',
+        }).done(function(data) {
+            $('#show_info').html(data);
+        });
+    });
+
     $(document).on('click', '#list_plan', function(e) {
         e.preventDefault();
         let id = $(this).attr('value');
