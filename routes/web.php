@@ -102,6 +102,7 @@ Route::group(['prefix' => 'plan'], function () {
     Route::get('/booking/adult', 'Sites\BookingController@getAdult')->name('user.booking.adult');
     Route::get('/booking/child', 'Sites\BookingController@getChild')->name('user.booking.child');
     Route::post('/{id}/booking/add', 'Sites\BookingController@store')->name('user.plan.bookingstore');
+    Route::post('/{id}/booking/payment', 'Sites\BookingController@payment')->name('booking.payment');
 });
 
 Route::group(['namespace' => 'Sites'], function() {
