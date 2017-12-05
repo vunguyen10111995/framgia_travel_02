@@ -28,6 +28,6 @@
         <span class="title-plan">{{ trans('site.fork') }}</span>
         <a class="fa fa-eye" aria-hidden="true" id="view_fork" data-toggle="modal" data-target="#view_list_fork" data-id="{{ $plan->id }}"> &nbsp;  {{ count($plan->forks) }}
         </a>
-        <h5 class="title-plan">{{ trans('site.status') }} &nbsp; <span>{{ $plan->status == 0 ? "Inprogress" : "Approved" }}</span></h5>
+        <h5 class="title-plan">{{ trans('site.status') }} &nbsp; <span>{{ $plan->status == 0 ? config('setting.status.inprogress') : config('setting.status.approved') }}</span></h5>
     </div>
 @endforeach

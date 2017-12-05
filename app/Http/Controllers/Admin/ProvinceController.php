@@ -42,22 +42,29 @@ class ProvinceController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        try {
+            $this->validate($request, [
             'image' => 'mimes:jpeg,jpg,png',
             'name' => 'required',
             'description' => 'required',
-        ]);
-        if ($request->hasFile('image')) {
-            $file_name = Helper::importFile($request->file('image'), config('setting.defaultPath'));
-            $image = $file_name;
-        }
-        $province = new Province();
-        $province->image = $image;
-        $province->name = $request->name;
-        $province->description = $request->description;
-        $province->save();
+            ]);
+            if ($request->hasFile('image')) {
+                $file_name = Helper::importFile($request->file('image'), config('setting.defaultPath'));
+                $image = $file_name;
+            }
+            $province = new Province();
+            $province->image = $image;
+            $province->name = $request->name;
+            $province->description = $request->description;
+            $province->save();
+            $html = view('admin._component.province.add_province', compact('province'));
 
-        return response()->json($province);
+            return response($html);
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        } 
     }
 
     /**
@@ -105,17 +112,18 @@ class ProvinceController extends Controller
         $this->validate($request, [
             'avatar' => 'mimes:jpeg,bmp,png,jpg',
         ]);
-        $data = Province::find($request->id);
         try {
+            $province = Province::findOrFail($request->id);
             if ($request->hasFile('avatar')) {
                 $file_name = Helper::importFile($request->file('avatar'), config('setting.defaultPath'));
                 $data->image = $file_name;
             }
-            $data->name = $request->name;
-            $data->description = $request->description;
-            $data->save();
-            
-            return response()->json($data);
+            $province->name = $request->name;
+            $province->description = $request->description;
+            $province->save();
+            $html = view('admin._component.province.add_province', compact('province'));
+
+            return response($html);
         } catch (Exception $e) {
             echo $e->get_message();
         }

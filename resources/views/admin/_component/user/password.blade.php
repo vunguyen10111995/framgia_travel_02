@@ -16,8 +16,7 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <form class="form-horizontal" method="POST" action="{{ route('admin.change.password', $user->id) }}">
-            {{ csrf_field() }}
+            {!! Form::open(['method' => 'POST', 'class' => 'form-horizontal', 'route' => ['admin.change.password', $user->id]]) !!}
                 <div class="form-group">
                     <label>{{ trans('admin.new_password') }}</label>
                     <input type="password" id="new_password" value="" class="form-control" name="new_password">
@@ -33,9 +32,9 @@
                     <p id="message">{{ Session::get('message') }}</p>
                 @endif
                 <div class="buttonUpdate">
-                    <input class="btn btn-success updatepassword" type="submit" value="Update">
+                    {!! Form::submit('Update', ['class' => 'btn btn-success updatepassword']) !!}
                 </div>
                 <input type="hidden" name="hidden" class="hidden_id" value="{{ $user->id }}">
-            </form>
+            {!! Form::close() !!}
         </div>
 @endsection

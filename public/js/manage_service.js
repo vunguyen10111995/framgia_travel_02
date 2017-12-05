@@ -116,7 +116,27 @@ $(document).ready(function() {
             processData: false, 
         }).done(function(data) {
             $('#viewModal').modal('hide');
-        });
+            $('.'+id).replaceWith(data);
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Update successfully !');
+            }, 0);
+        }).fail(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.error('Fail !');
+            }, 0);
+        })
     });
 
     $(document).on('click', '.createValue', function(e){
@@ -131,8 +151,26 @@ $(document).ready(function() {
             processData: false, 
         }).done(function(data) {
             $('#addValue').modal('hide');
-        }).fail(function() {
-            alert('Update Unsuccessful, Please Check Again!');
+            $('tbody').append(data);
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Create successfully !');
+            }, 0);
+        }).fail(function(data) {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.error('Fail !');
+            }, 0);
         });
     });
 });
