@@ -28,7 +28,7 @@ class RequestServiceController extends Controller
         $request_service = RequestService::findOrFail($request->id);
         $request_service->status = $request->status;
         $request_service->save();
-        
+        $html = view('admin._component.request_service.update_status', compact('request_service'));
         if($request->status == 1) {
             $data = [
                 'province_id' => $request_service['province_id'],
@@ -40,7 +40,7 @@ class RequestServiceController extends Controller
             $service = Service::create($data);
         }
 
-        return response()->json($request_service);
+        return response($html);
     }
 
     public function search(Request $request)

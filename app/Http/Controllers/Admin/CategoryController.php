@@ -24,7 +24,9 @@ class CategoryController extends Controller
             $category->status = $request->status;
             $category->save();
 
-            return response()->json($category);
+            $html = view('admin._component.category.update_status', compact('category'))->render();
+            
+            return response($html);
     }
 
     public function store(Request $request)
@@ -39,8 +41,9 @@ class CategoryController extends Controller
         ];
         
         $category = Category::create($data);
-
-        return response()->json($category);
+        $html = view('admin._component.category.update_status', compact('category'))->render();
+            
+        return response($html);
     }
 
     public function update(Request $request)

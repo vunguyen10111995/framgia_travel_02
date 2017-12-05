@@ -119,9 +119,12 @@ class PlanController extends Controller
     public function update(Request $request)
     {   
         try {
-            $plan = Plan::find($request->id)->update($request->all());
+            $plan = Plan::findOrFail($request->id);
+            $plan->status = $request->status;
+            $plan->save();
+            $result = view('admin._component.plan.update_status', compact('plan'));
 
-            return response()->json($plan);
+            return response($result);
         } catch (Exception $e) {
             $response['error'] = true;
 
