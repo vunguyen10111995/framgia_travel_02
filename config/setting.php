@@ -19,4 +19,7 @@ return [
     'guide' => 1,
     'user' => 2,
     'requestPath' => 'images/requestServices/',
+    'paid' => 1,
+    'unpaid' => 0,
+    'succeeded' => 1,
 ];

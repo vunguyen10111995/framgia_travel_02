@@ -1,11 +1,6 @@
-/*.mainContentSection {
-    background-color: #f1f1f1 !important;
+.mainContentSection {
+    margin-top: 50px;
 }
-
-.content-request {
-    background-color: white; 
-    margin-top: -70px !important;
-}*/
 
 .title-booking {
     color: #c50000 !important;
@@ -40,4 +35,9 @@
 
 #total-number {
     background-color: #f1f1f1 !important;
+}
+
+.active-book {
+    background-color: #34a736 !important;
+    color: white !important;
 }

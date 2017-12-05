@@ -3,10 +3,7 @@
     <div class="row">
         <div class="form-group col-sm-12 col-xs-12">
             <label for="">{{ trans('site.full_name') }}</label>
-            <input type="text" class="form-control" name="full_name_guest[]">
-            @if ($errors->has('full_name_guest'))
-                <span class="alert alert-danger help-block">{{ $errors->first('full_name_guest[]') }}</span>
-            @endif
+            <input type="text" class="form-control" name="full_name_guest[]" id="full_name_guest">
         </div>
         <div class="form-group col-sm-6 col-xs-12">
             <label for="">{{ trans('site.gender') }}</label>
@@ -17,10 +14,7 @@
         </div>
         <div class="form-group col-sm-6 col-xs-12">
             <label for="">{{ trans('site.address') }}</label>
-            <input type="text" class="form-control" name="address[]">
-            @if ($errors->has('address'))
-                <span class="alert alert-danger help-block">{{ $errors->first('address') }}</span>
-            @endif
+            <input type="text" class="form-control" name="address[]" id="address_guest">
         </div>
         <div class="form-group col-sm-6 col-xs-12">
             <label for="">{{ trans('site.country') }}</label>
