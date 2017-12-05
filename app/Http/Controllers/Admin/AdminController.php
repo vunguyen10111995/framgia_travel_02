@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Helpers\helper;
 use App\Http\Requests\admin\ProfileAdmin;
+use App\Http\Requests\admin\ChangePassword;
 
 class AdminController extends Controller
 {
@@ -66,8 +67,9 @@ class AdminController extends Controller
         $file_name = helper::upload($request->file('avatar'), config('setting.defaultPath'));
         $data['avatar'] = $file_name;
         $user = User::create($data);
-
-        return response()->json($user);
+        $html = view('admin._component.user.update_level', compact('user'))->render();
+            
+        return response($html);
     }
 
     /**
@@ -126,7 +128,9 @@ class AdminController extends Controller
             $user->status = $request->status;
             $user->save();
             
-            return response()->json($user);
+            $html = view('admin._component.user.update_level', compact('user'))->render();
+            
+            return response($html);
         } catch (Exception $e) {
             echo $e->get_message();
         }
@@ -203,12 +207,8 @@ class AdminController extends Controller
         return view('admin._component.user.password', compact('user'));
     }
 
-    public function changePassWord(Request $request)
+    public function changePassWord(ChangePassword $request)
     {
-        $this->validate($request, [
-            'new_password' => 'required|min:6|max:20',
-            're_new_password' => 'required|min:6|max:20|same:new_password',
-        ]);
         try {
             $user = User::findOrFail($request->id);
             $user->password = $request->new_password;

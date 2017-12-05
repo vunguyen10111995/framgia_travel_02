@@ -109,13 +109,7 @@ $(document).ready(function() {
             }
         }).done(function(data) {
             $('#myModal').modal('hide');
-            $(this).replaceWith(
-            "<tr class='value-users " + data.id + "'><td>" 
-                + data.id + "</td><td>" + data.full_name + "</td><td>" 
-                + data.email + "</td><td>" + data.avatar + "</td><td>" 
-                + data.address + "</td><td>" + data.gender + "</td><td>" 
-                + data.gender + "</td><td>" + data.level + "</td><td>" 
-                + data.status + "</td><td>" + data.view + "</td></tr>");
+            $('.'+id).replaceWith(data);
         });
     });
 
@@ -131,6 +125,7 @@ $(document).ready(function() {
             processData: false, 
         }).done(function(data) {
             $('#addValue').modal('hide');
+            $('tbody').append(data);
         });
     });
 

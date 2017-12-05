@@ -48,7 +48,6 @@ $(document).ready(function() {
     $(document).on('click', '.updateStatus', function(e) {
         e.preventDefault();
         var id = $('#select_permission').attr('data-id');
-        console.log(id);
         var status = $('#select_permission').val();
         $.ajax({
             url: '/admin/category/updateStatus',
@@ -60,6 +59,7 @@ $(document).ready(function() {
             }
         }).done(function(data) {
             $('#myModal').modal('hide');
+            $('.'+id).replaceWith(data);
         });
     });
 
@@ -75,6 +75,7 @@ $(document).ready(function() {
             type: 'POST',
         }).done(function(data) {
             $('#addValue').modal('hide');
+            $('tbody').append(data);
         });
     });
 
