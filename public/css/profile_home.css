@@ -497,3 +497,16 @@ ul.user-header-menu li > a:hover > span {
     margin: 0 auto;
     padding-left: 117px;
 }
+
+.gallery-header {
+    font-weight: bold;
+}
+
+.select-plan {
+    max-width: 100px;
+}
+
+#image_gallery {
+    width: 825px;
+    height: 400px;
+}

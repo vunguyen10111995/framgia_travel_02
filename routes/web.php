@@ -103,6 +103,9 @@ Route::group(['prefix' => 'plan'], function () {
     Route::get('/booking/child', 'Sites\BookingController@getChild')->name('user.booking.child');
     Route::post('/{id}/booking/add', 'Sites\BookingController@store')->name('user.plan.bookingstore');
     Route::post('/{id}/booking/payment', 'Sites\BookingController@payment')->name('booking.payment');
+    Route::get('/gallery', 'Sites\DashboardController@getGallery')->name('plan.gallery');
+    Route::get('/gallery/{id}/detail', 'Sites\DashboardController@getDetail')->name('plan.gallery.detail');
+    Route::post('/gallery/{id}/upload', 'Sites\DashboardController@postGallery')->name('plan.gallery.upload');
 });
 
 Route::group(['namespace' => 'Sites'], function() {

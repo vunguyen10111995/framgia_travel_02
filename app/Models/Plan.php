@@ -48,6 +48,11 @@ class Plan extends Model
         return $this->hasMany(Schedule::class, 'plan_id');
     }
 
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'plan_id');
+    }
+
     public function scopeWhereUser($query, $value)
     {
         return $query->where('user_id', $value)->with('planProvinces.province');

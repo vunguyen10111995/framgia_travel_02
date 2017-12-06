@@ -131,7 +131,7 @@ $(document).ready(function() {
         }
 
         let id = $(this).attr('plan-id');
-   
+
         $.ajax({
             type: 'POST',
             url: '/plan/' + id + '/booking/payment',

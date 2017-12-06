@@ -298,7 +298,7 @@
                                     </div>
                                 </li>
                                 <li class="pull-right">
-                                    <button type="button" class="btn buttonTransparent btn-payment" plan-id={{ $plan->id }}>
+                                    <button type="button" id="btnt" class="btn buttonTransparent btn-payment" plan-id={{ $plan->id }} disabled>
                                         {{ trans('site.next') }}
                                     </button>
                                 </li>

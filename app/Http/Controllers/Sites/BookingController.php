@@ -113,14 +113,11 @@ class BookingController extends Controller
                 'description' => trans('site.pay_stripe'),
             ]);
 
-            if ($charge['status'] != config('setting.succeeded')) {
-                return back()->with('message', trans('site.payment_error'));
-            }
             $bookings = Booking::whereBooking(Auth::user()->id, $id)->pluck('id')->last();
             $booking = Booking::find($bookings);
             $booking->status = config('setting.paid');
             $result = $booking->save();
-            
+
             if (!$result) {
                 return back();
             }
