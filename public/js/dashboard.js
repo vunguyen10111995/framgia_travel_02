@@ -83,4 +83,42 @@ $(document).ready(function() {
             },
         });
     }
+
+    $(document).on('click', '#show-gallery', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/plan/gallery',
+            type: 'GET',
+            success : function(response) {
+                $('#show_info').html(response);
+            }
+        });
+    });
+
+    $(document).on('change', '.select-plan', function(e) {
+        let id = $(this).parents('.filter').find('.select-plan').val();
+        e.preventDefault();
+        $.ajax({
+            url: '/plan/gallery/' + id + '/detail',
+            type: 'GET',
+            success : function(response) {
+                $('.img-detail').html(response);
+            }
+        });
+    });
+
+    $(function() {
+        $('#file').change(function() {
+            var file = this.files[0];
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        });
+    });
+    
+    function imageIsLoaded(e) {
+        $('#file').css('color', 'green');
+        $('#image_display').css('display', 'block');
+        $('#image_gallery').attr('src', e.target.result);
+    }; 
 });

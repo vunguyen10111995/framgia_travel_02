@@ -182,7 +182,7 @@
                                 <form action="{{ route('user.fork', $plan->id) }}" method="get">
                                     <button class="btn btn-default" type="submit">{{ trans('site.fork') }}</button>
                                 </form>
-                                    <a href="{{ route('user.booking') }}" class="btn buttonTransparent">{{ trans('site.book_now') }}</a>
+                                    <a href="{{ route('user.plan.booking', $plan->id) }}" class="btn buttonTransparent">{{ trans('site.book_now') }}</a>
                                 </p>
                             @endif
                         </div>

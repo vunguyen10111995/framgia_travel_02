@@ -3,10 +3,15 @@
 @section('style')
     {{ Html::style('css/profile_home.css') }}
     {{ Html::style('bowers/select2/dist/css/select2.min.css') }}
+    {{ Html::style('/bowers/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}
 @endsection
 
 @section('script')
+    {{ Html::script('bowers/select2/dist/js/select2.full.min.js') }}
+    {{ Html::script('/bowers/moment/min/moment.min.js') }}
+    {{ Html::script('/bowers/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
     {{ Html::script('js/list_fork.js') }}
+    {{ Html::script('js/dashboard.js') }}
 @endsection
 
 @section('content')
@@ -173,7 +178,7 @@
                             @if($user->id == Auth::user()->id)
                                 <li><a href="{{ route('user.profile') }}">{{ trans('site.profile') }}</a></li>
                                 <li><a href="{{ route('user.dashboard', Auth::user()->id) }}">{{ trans('site.plans') }} <span>{{ $numberPlan }}</span></a></li>
-                                <li><a href="">{{ trans('site.gallery') }}</a></li>
+                                <li><a href="" id="show-gallery">{{ trans('site.gallery') }}</a></li>
                                 <li><a href="">{{ trans('site.reviews') }}</a></li>
                                 <li><a href="" data-toggle="modal" data-target="#following">{{ trans('site.followings') }} <span>{{ $following }}</span></a></li>
                                 <li><a href="" data-toggle="modal" data-target="#follower">{{ trans('site.followers') }} <span>{{ $follower }}</span></a></li>
