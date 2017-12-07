@@ -191,13 +191,13 @@
         </div>
     </div>
     <div class="container" id="content-dashboard">
-        <div class="col-md-3 .col-md-pull-9">
+        <div class="col-md-3 .col-md-pull-9" id="menu_list">
             <div class="sidebar">
                 <ul class="nav nav-sidebar">
                     <li><a href="" id="list_plan" value="{{ Auth::user()->id }}">{{ trans('site.my_plans') }}</a></li>
                     <li><a href="" id="list_fork" value="{{ Auth::user()->id }}">{{ trans('site.my_fork_plans') }}</a></li>
                     <li><a href="" id="list_request_service" value="{{ Auth::user()->id }}">{{ trans('site.request_services') }}</a></li>
-                    <li><a href="" id="list_booking" value="{{ Auth::user()->id }}">{{ trans('site.booking') }}</span></a></li>
+                    <li><a href="" id="list_booking" value="{{ Auth::user()->id }}">{{ trans('site.booking') }}</a></li>
                 </ul>
             </div>
         </div>
@@ -206,10 +206,11 @@
             @if($user->id == Auth::user()->id)
                 <a href="{{ route('user.plan') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i><span> {{ trans('site.add_plan') }}</span></a>
             @endif
-            <div class="wrap">
-                @foreach($plans as $plan)
-                    <a href="{{ route('user.schedule', $plan->id) }}" class="content-plan">
-                    <h5 class="title-plan">{{ $plan->title }}</h5>
+            <h3>{{ trans('site.you_have') }} {{ count($plans) }} {{ trans('admin.plans') }}</h3>
+            @foreach($plans as $plan)
+                @if(count($plans))
+                    <a href="" class="content-plan">
+                        <h5 class="title-plan">{{ $plan->title }}</h5>
                         <div class="tile">
                             <h1 class="del-plan">
                                 <i class="fa fa-times-circle" aria-hidden="true"></i>
@@ -235,16 +236,44 @@
                     </a>
                     <div>
                         <span class="title-plan">{{ trans('site.fork') }}</span>
-                        <a class="fa fa-eye" aria-hidden="true" style="margin-left: 120px" id="view_fork" data-toggle="modal" data-target="#view_list_fork" data-id="{{ $plan->id }}"> &nbsp;  {{ count($plan->forks) }}
+                        <a class="fa fa-eye" aria-hidden="true" id="view_fork" data-toggle="modal" data-target="#view_list_fork" data-id="{{ $plan->id }}"> &nbsp;  {{ count($plan->forks) }}
                         </a>
-                        <h5 class="title-plan">{{ trans('site.status') }} &nbsp; <span style="margin-left: 100px;">{{ $plan->status == 0 ? "Inprogress" : "Approved" }}</span></h5>
+                        <h5 class="title-plan">{{ trans('site.status') }} &nbsp; <span>{{ ($plan->status == config('setting.status.inprogress')) ? trans('admin.inprogress') : trans('admin.approved') }}</span></h5>
+                        <span class="title-plan">{{ trans('site.booking') }}</span>
+                        <a class="fa fa-eye" aria-hidden="true" id="view_booking" data-toggle="modal" data-target="#view_list_booking" data-id="{{ $plan->id }}"> &nbsp;  {{ count($plan->bookings) }}
+                        </a>
                     </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+</div>
+{{-- list book --}}
+<div class="modal fade" id="view_list_booking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ trans('site.close') }}</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{ trans('site.list_fork') }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                @foreach($plans as $plan)
+                    @foreach($plan->bookings as $booking)
+                    <div class="form-group">
+                        <label for="label" class="control-label">{{ $loop->iteration }}</label>
+                            <div>
+                                {!! Form::text('full_name', $booking->user->full_name, array('class' => 'form-control')) !!}
+                            </div> 
+                        </div>
+                    @endforeach
                 @endforeach
-                {!! $plans->render() !!}
+                </div>
             </div>
         </div>
     </div>
 </div>
+{{-- List fork --}}
 <div class="modal fade" id="view_list_fork" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

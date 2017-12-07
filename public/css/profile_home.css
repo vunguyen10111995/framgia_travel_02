@@ -510,3 +510,10 @@ ul.user-header-menu li > a:hover > span {
     width: 825px;
     height: 400px;
 }
+
+#detail_status {
+    margin-left: 300px;
+}
+#view_fork {
+    margin-left: 120px;
+}

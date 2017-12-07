@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plan;
+use App\Models\User;
 use App\Models\PlanProvince;
 use App\Models\Schedule;
 use App\Models\Booking;
@@ -130,11 +131,26 @@ class BookingController extends Controller
         }
     }
 
-    public function showListBooking()
+    public function showListBooking(Request $request)
     {
-        $user = User::find($request->id);
-        $bookings = Booking::where('user_id', '=' , $user->id)->get();
-        $html = view('sites._component.view_booking', compact('bookings'))->render();
+        try {
+            $user = User::findOrFail($request->id);
+            $bookings = Booking::with('plan')->where('user_id', '=', $user->id)->orderBy('created_at', 'desc')->get();
+            $html = view('sites._component.view_booking', compact('bookings'))->render();
+
+            return response($html);
+        } catch (Exception $e) {
+            $response['error'] = true;
+
+            return response()->json($response);
+        }
+        
+    }
+
+    public function showDetailBooking(Request $request)
+    {
+        $booking = Booking::find($request->id);
+        $html = view('sites._component.view_detail_booking', compact('booking'))->render();
 
         return response($html);
     }
