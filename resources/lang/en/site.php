@@ -191,4 +191,5 @@ return [
     'not_forks' => 'Your Fork is empty',
     'not_request_service' => 'Your Request Service is empty',
     'you_have' => 'You Have',
+    'rate' => 'Rate',
 ];
