@@ -21,7 +21,7 @@ class Booking extends Model
         'status'
     ];
 
-    public function customer()
+    public function customers()
     {
         return $this->hasmany(Customer::class);
     }

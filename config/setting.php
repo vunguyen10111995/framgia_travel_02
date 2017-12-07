@@ -22,4 +22,9 @@ return [
     'paid' => 1,
     'unpaid' => 0,
     'succeeded' => 1,
+    'adult' => 0,
+    'guest' => 1,
+    'vietnam' => 0,
+    'foreign' => 1,
+    'oversea' => 2,
 ];

@@ -49,6 +49,17 @@ $(document).ready(function() {
         });
     });
 
+    $(document).on('click', '.view_detail_booking', function(e) {
+        e.preventDefault();
+        var id = $('.detail_book').val();
+        $.ajax({
+            url: '/dashboard/'+ id +'/detail-booking',
+            type: 'GET',
+        }).done(function(data) {
+            $('#show_info').html(data);
+        });
+    });
+
     $(function() {   
         $('.select2').select2();
     });
