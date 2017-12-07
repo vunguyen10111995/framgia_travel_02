@@ -11,16 +11,16 @@
                         <a href="{{ route('home') }}">{{ trans('site.home') }}</a>
                     </li>
                     <li class="dropdown megaDropMenu ">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="300" data-close-others="true" aria-expanded="false">{{ trans('site.provinces') }}</a>
+                        <a href="{{ route('province.index') }}">{{ trans('site.provinces') }}</a>
                     </li>
-                    <li class="dropdown singleDrop ">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('site.hotels') }}</a>
+                    <li class="dropdown megaDropMenu ">
+                        <a href="{{ route('hotel.index') }}">{{ trans('site.hotels') }}</a>
                     </li>
-                    <li class="dropdown singleDrop ">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('site.restaurants') }}</a>
+                    <li class="dropdown megaDropMenu ">
+                        <a href="{{ route('restaurant.index') }}">{{ trans('site.restaurants') }}</a>
                     </li>
-                    <li class="dropdown singleDrop ">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('site.activities') }}</a>
+                    <li class="dropdown megaDropMenu ">
+                        <a href="{{ route('activity.index') }}">{{ trans('site.activities') }}</a>
                     </li>
                     <li class="dropdown singleDrop ">
                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('site.guides') }}</a>

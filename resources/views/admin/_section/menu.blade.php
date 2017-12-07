@@ -4,7 +4,7 @@
             <li class="nav-header">
                 <div class="dropdown profile-element">
                     <span>
-                        <img alt="image" class="img-circle" src="{{ asset('images/img_admin/profile_small.jpg') }}" />
+                        <img alt="image" class="img-circle" src="{{ Auth::user()->avatar }}" height="80px" width="80px" />
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
@@ -52,6 +52,9 @@
             </li>
             <li>
                 <a href="{{ route('admin.request.service') }}"><i class="fa fa-star"></i> <span class="nav-label">{{ trans('admin.request_services') }}</span></a>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-star"></i> <span class="nav-label">{{ trans('admin.goto_index') }}</span></a>
             </li>
         </ul>
     </div>

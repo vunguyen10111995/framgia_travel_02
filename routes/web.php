@@ -109,6 +109,14 @@ Route::group(['prefix' => 'plan'], function () {
 });
 
 Route::group(['namespace' => 'Sites'], function() {
+    Route::get('/province', 'ShowInfoDashboardController@showProvinces')->name('province.index');
+    Route::get('/province/{id}/detail', 'ShowInfoDashboardController@provinceDetail')->name('province.detail');
+    Route::get('/hotel', 'ShowInfoDashboardController@showHotels')->name('hotel.index');
+    Route::get('/hotel/{id}/detail', 'ShowInfoDashboardController@hotelDetail')->name('hotel.detail');
+    Route::get('/restaurant', 'ShowInfoDashboardController@showRestaurants')->name('restaurant.index');
+    Route::get('/restaurant/{id}/detail', 'ShowInfoDashboardController@restaurantDetail')->name('restaurant.detail');
+    Route::get('/activity', 'ShowInfoDashboardController@showActivities')->name('activity.index');
+    Route::get('/activity/{id}/detail', 'ShowInfoDashboardController@activityDetail')->name('activity.detail');
     Route::get('/plan/{id}/fork', 'ForkController@showFork')->name('user.fork');
     Route::post('/plan/{id}/fork', 'ForkController@postFork')->name('user.postfork');
     Route::get('/dashboard/{id}/list-fork', 'ForkController@showForkPlan')->name('fork.plan');

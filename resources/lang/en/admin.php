@@ -105,4 +105,5 @@ return [
     'new_password' => 'New Password',
     're_new_password' => 'New Password Again',
     'guide' => 'Guide',
+    'goto_index' => 'Go To Index',
 ];

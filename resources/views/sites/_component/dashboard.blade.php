@@ -273,6 +273,31 @@
         </div>
     </div>
 </div>
+{{-- list book --}}
+<div class="modal fade" id="view_list_booking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{ trans('site.close') }}</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{ trans('site.list_fork') }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                @foreach($plans as $plan)
+                    @foreach($plan->bookings as $booking)
+                    <div class="form-group">
+                        <label for="label" class="control-label">{{ $loop->iteration }}</label>
+                            <div>
+                                {!! Form::text('full_name', $booking->user->full_name, array('class' => 'form-control')) !!}
+                            </div> 
+                        </div>
+                    @endforeach
+                @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {{-- List fork --}}
 <div class="modal fade" id="view_list_fork" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -4,6 +4,10 @@
     {{ trans('admin.profile') }}
 @endsection
 
+@section('style')
+    {!! Html::style('css/profile_admin.css') !!}
+@endsection
+
 @section('script')
     {!! Html::script('js/profile_admin.js') !!}
 @endsection
@@ -45,7 +49,7 @@
                     <select class="form-control gender" id="gender" name="gender" value="{{ $admin->gender }}">
                     </select>
                 </div>
-                    <div class="col-md-1 buttonUpdate">
+                    <div class="col-md-1" id="buttonUpdate">
                         <input class="btn btn-success update" type="submit" value="Update">
                     </div>
             </form>
