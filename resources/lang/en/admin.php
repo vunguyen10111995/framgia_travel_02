@@ -106,4 +106,11 @@ return [
     're_new_password' => 'New Password Again',
     'guide' => 'Guide',
     'goto_index' => 'Go To Index',
+    'today' => 'Today',
+    'payment' => 'Payment',
+    'customers' => 'Customer',
+    'total_price' => 'Total Price',
+    'you_have_user' => 'You have :many User Pending',
+    'you_have_plan' => 'You have :many Plan Pending',
+    'you_have_rq' => 'You have :many Request Service Pending',
 ];

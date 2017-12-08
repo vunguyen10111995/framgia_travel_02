@@ -9,6 +9,40 @@
             </form>
         </div>
         <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell"></i>  <span class="label label-primary">{{ count($data['users']) + count($data['plans']) + count($data['request_services']) }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="{{ route('admin.user.index') }}">
+                            <div>
+                                <i class="fa fa-envelope fa-fw"></i> {{ trans('admin.you_have_user', ['many' => count($data['users'])] ) }}
+                                <span class="pull-right text-muted small"></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{{ route('admin.plan.index') }}">
+                            <div>
+                                <i class="fa fa-twitter fa-fw"></i> {{ trans('admin.you_have_plan', ['many' => count($data['plans'])] ) }}
+                                <span class="pull-right text-muted small"></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{{ route('admin.request.service') }}">
+                            <div>
+                                <i class="fa fa-upload fa-fw"></i> {{ trans('admin.you_have_rq', ['many' => count($data['request_services'])] ) }}
+                                <span class="pull-right text-muted small"></span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        <ul class="nav navbar-top-links navbar-right">
             <li>
                 <span class="m-r-sm text-muted welcome-message">{{ trans('admin.welcome', ['name' => Auth::user()->full_name ]) }}</span>
             </li>

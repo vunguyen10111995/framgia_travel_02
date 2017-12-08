@@ -54,7 +54,7 @@
                 <a href="{{ route('admin.request.service') }}"><i class="fa fa-star"></i> <span class="nav-label">{{ trans('admin.request_services') }}</span></a>
             </li>
             <li>
-                <a href=""><i class="fa fa-star"></i> <span class="nav-label">{{ trans('admin.goto_index') }}</span></a>
+                <a href="{{ route('home') }}"><i class="fa fa-star"></i> <span class="nav-label">{{ trans('admin.goto_index') }}</span></a>
             </li>
         </ul>
     </div>

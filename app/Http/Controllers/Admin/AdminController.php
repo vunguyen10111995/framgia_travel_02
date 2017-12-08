@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Helpers\helper;
+use App\Models\Plan;
+use App\Models\Customer;
+use App\Models\Province;
+use App\Models\Service;
 use App\Http\Requests\admin\ProfileAdmin;
 use App\Http\Requests\admin\ChangePassword;
 
@@ -28,7 +32,21 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin._component.index');
+        $plan = Plan::all();
+        $customer = Customer::all();
+        $province = Province::all();
+        $numberProvince = count($province);
+        $numberCustomer = count($customer);
+        $numberPlan = count($plan);
+        $service = Service::all();
+        $numberService = count($service);
+
+        return view('admin._component.index', compact(
+            'numberPlan', 
+            'numberCustomer', 
+            'numberProvince', 
+            'numberService'
+        ));
     }
     /**
      * Show the form for creating a new resource.
